@@ -1,182 +1,210 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio — Material 3 Clean</title>
-  <meta name="theme-color" content="#0B57D0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght@400;FILL@0" rel="stylesheet">
-  <script type="module" src="https://unpkg.com/@material/web@latest/all.js?module"></script>
-  <link rel="stylesheet" href="assets/css/m3-clean.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2196F3">
+  <title>Portfolio — Nama Kamu</title>
+
+  <!-- Material Icons & Materialize CSS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <meta name="description" content="Portofolio Material Design — tampilkan proyek, skill, dan kontak.">
+  <meta property="og:title" content="Portfolio — Nama Kamu">
+  <meta property="og:description" content="Portofolio Material Design — tampilkan proyek, skill, dan kontak.">
+  <meta property="og:type" content="website">
 </head>
-<body>
-  <!-- Top bar (simple, white) -->
-  <header class="appbar">
-    <div class="container appbar-in">
-      <div class="brand">Nama Kamu</div>
-      <nav class="nav">
-        <md-assist-chip label="About" href="#about"></md-assist-chip>
-        <md-assist-chip label="Projects" href="#projects"></md-assist-chip>
-        <md-assist-chip label="Skills" href="#skills"></md-assist-chip>
-        <md-assist-chip label="Contact" href="#contact"></md-assist-chip>
-      </nav>
-      <button id="btn-menu" class="icon-btn" aria-label="Open menu">
-        <span class="material-symbols-rounded">menu</span>
-      </button>
+<body class="blue lighten-5">
+  <!-- Navbar -->
+  <div class="navbar-fixed">
+    <nav class="blue">
+      <div class="nav-wrapper container">
+        <a href="#home" class="brand-logo">Nama Kamu</a>
+        <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="waves-effect waves-light btn-small white blue-text text-darken-2" id="btn-download-cv">
+            <i class="material-icons left">file_download</i>CV</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Mobile Nav -->
+  <ul class="sidenav" id="mobile-nav">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <!-- Hero -->
+  <section id="home" class="section hero blue lighten-4">
+    <div class="container">
+      <div class="row valign-wrapper">
+        <div class="col s12 m6">
+          <h1 class="hero-title">Hi, I'm <span class="blue-text text-darken-2">Nama Kamu</span> 👋</h1>
+          <p class="flow-text grey-text text-darken-3">
+            Software Engineer / UI-UX / Computer Vision — fokus bikin solusi praktis dan performa tinggi.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn-large blue waves-effect waves-light">
+              <i class="material-icons left">work</i>Lihat Projects
+            </a>
+            <a href="#contact" class="btn-large white blue-text text-darken-2 waves-effect">
+              <i class="material-icons left">mail</i>Kontak
+            </a>
+          </div>
+        </div>
+        <div class="col s12 m6 center">
+          <img src="assets/img/placeholder.png" alt="Hero" class="hero-img z-depth-2 responsive-img">
+        </div>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <!-- Drawer mobile -->
-  <md-navigation-drawer id="drawer" type="modal">
-    <div class="drawer-links">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+  <!-- About -->
+  <section id="about" class="section white">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">person</i>About</h3>
+          <p class="grey-text text-darken-3">
+            Tulis ringkasan singkat tentang pengalamanmu, industri yang kamu geluti (FMCG, CV, Android, dsb),
+            dan value yang kamu tawarkan. Buat 3–4 kalimat yang kuat.
+          </p>
+          <ul class="collection z-depth-1">
+            <li class="collection-item">🏆 Highlight 1 — hasil terukur (contoh: “Turunkan WAPE 22%”)</li>
+            <li class="collection-item">🚀 Highlight 2 — performa / skalabilitas</li>
+            <li class="collection-item">🤝 Highlight 3 — kolaborasi dengan klien besar</li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </md-navigation-drawer>
+  </section>
 
-  <main>
-    <!-- Hero -->
-    <section id="home" class="section hero">
-      <div class="container grid-hero">
-        <div>
-          <h1>Halo, aku <span class="primary">Nama Kamu</span> 👋</h1>
-          <p class="lead">Engineer / UI‑UX / Computer Vision — bikin solusi cepat, elegan, dan scalable.</p>
-          <div class="cta">
-            <md-filled-button href="#projects">
-              <span class="material-symbols-rounded" slot="icon">work</span>Lihat Projects
-            </md-filled-button>
-            <md-tonal-button href="#contact">
-              <span class="material-symbols-rounded" slot="icon">send</span>Kontak
-            </md-tonal-button>
-            <md-assist-chip label="Available for work" elevated></md-assist-chip>
+  <!-- Projects -->
+  <section id="projects" class="section blue lighten-5">
+    <div class="container">
+      <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">apps</i>Projects</h3>
+      <div class="row" id="project-grid">
+        <!-- Project Card Template (duplicate & edit) -->
+        <div class="col s12 m6 l4">
+          <div class="card hoverable">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator" src="assets/img/placeholder.png" alt="Project Image">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">
+                People Counting<span class="right"><i class="material-icons">more_vert</i></span>
+              </span>
+              <p><a href="#" target="_blank">Demo / Repo</a></p>
+              <div class="chip blue white-text">CV</div>
+              <div class="chip blue white-text">Edge</div>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">People Counting<i class="material-icons right">close</i></span>
+              <p>Sistem counting di toko ritel untuk traffic, heatmap, dan journey analytics. Akurasi tinggi dan realtime.</p>
+            </div>
           </div>
         </div>
-        <div class="media">
-          <img src="assets/img/hero.png" alt="Hero image" />
+
+        <div class="col s12 m6 l4">
+          <div class="card hoverable">
+            <div class="card-image">
+              <img src="assets/img/placeholder.png" alt="Project Image">
+            </div>
+            <div class="card-content">
+              <span class="card-title">Merchandiser App</span>
+              <p><a href="#" target="_blank">Case Study</a></p>
+              <div class="chip blue white-text">Android</div>
+              <div class="chip blue white-text">Offline-first</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s12 m6 l4">
+          <div class="card hoverable">
+            <div class="card-image">
+              <img src="assets/img/placeholder.png" alt="Project Image">
+            </div>
+            <div class="card-content">
+              <span class="card-title">Forecast Dashboard</span>
+              <p><a href="#" target="_blank">Live Demo</a></p>
+              <div class="chip blue white-text">Analytics</div>
+              <div class="chip blue white-text">Timeseries</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section white">
+    <div class="container">
+      <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">build</i>Skills</h3>
+      <div class="row">
+        <div class="col s12">
+          <div class="chips-container">
+            <div class="chip">Android (Kotlin/Java)</div>
+            <div class="chip">Node.js/Express</div>
+            <div class="chip">ClickHouse/MySQL</div>
+            <div class="chip">TensorFlow Lite</div>
+            <div class="chip">Jetpack Compose</div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- About -->
-    <section id="about" class="section">
-      <div class="container">
-        <div class="title"><span class="material-symbols-rounded">person</span>About</div>
-        <md-elevated-card class="card">
-          <div class="content">
-            <p>Tulis ringkasan 3–4 kalimat tentang pengalamanmu (FMCG, Android, CV) dan value yang kamu berikan.
-              Fokus pada dampak, performa, dan reliability.</p>
-            <ul class="bullets">
-              <li>🏆 Hasil terukur (mis. turunkan WAPE 22%).</li>
-              <li>⚡ Performa tinggi & offline‑first di edge.</li>
-              <li>🤝 Kolaborasi dengan brand besar.</li>
-            </ul>
+  <!-- Contact -->
+  <section id="contact" class="section blue lighten-5">
+    <div class="container">
+      <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">mail</i>Contact</h3>
+      <div class="row">
+        <div class="col s12 m8">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Ayo diskusi 👇</span>
+              <p>Kirim email langsung ke saya:</p>
+              <a class="btn blue waves-effect" href="mailto:you@example.com?subject=Kerja%20Sama%20—%20Portfolio">
+                <i class="material-icons left">send</i>Email Saya
+              </a>
+              <p class="grey-text" style="margin-top: 12px">Atau DM: <a href="#" target="_blank">LinkedIn</a> • <a href="#" target="_blank">GitHub</a></p>
+            </div>
           </div>
-        </md-elevated-card>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section">
-      <div class="container">
-        <div class="title"><span class="material-symbols-rounded">apps</span>Projects</div>
-        <div class="grid-cards">
-          <md-elevated-card class="project">
-            <img class="media" src="assets/img/hero.png" alt="Project">
-            <div class="content">
-              <h3>People Counting</h3>
-              <p>Traffic, heatmap, journey — real‑time dan akurat untuk ritel.</p>
-              <div class="chips">
-                <md-suggestion-chip label="CV"></md-suggestion-chip>
-                <md-suggestion-chip label="Edge"></md-suggestion-chip>
-              </div>
-            </div>
-            <div class="actions">
-              <md-filled-button href="#" target="_blank"><span slot="icon" class="material-symbols-rounded">link</span>Demo</md-filled-button>
-              <md-outlined-button href="#" target="_blank"><span slot="icon" class="material-symbols-rounded">code</span>Repo</md-outlined-button>
-            </div>
-          </md-elevated-card>
-
-          <md-elevated-card class="project">
-            <img class="media" src="assets/img/hero.png" alt="Project">
-            <div class="content">
-              <h3>Merchandiser App</h3>
-              <p>Android offline‑first: OSA, Planogram, POSM, IR photo.</p>
-              <div class="chips">
-                <md-suggestion-chip label="Android"></md-suggestion-chip>
-                <md-suggestion-chip label="Offline‑first"></md-suggestion-chip>
-              </div>
-            </div>
-            <div class="actions">
-              <md-tonal-button href="#" target="_blank"><span slot="icon" class="material-symbols-rounded">article</span>Case Study</md-tonal-button>
-            </div>
-          </md-elevated-card>
-
-          <md-elevated-card class="project">
-            <img class="media" src="assets/img/hero.png" alt="Project">
-            <div class="content">
-              <h3>Forecast Dashboard</h3>
-              <p>Timeseries KPI (velocity, lead time, bug rate) dengan insight yang actionable.</p>
-              <div class="chips">
-                <md-suggestion-chip label="Analytics"></md-suggestion-chip>
-                <md-suggestion-chip label="Timeseries"></md-suggestion-chip>
-              </div>
-            </div>
-            <div class="actions">
-              <md-outlined-button href="#" target="_blank"><span slot="icon" class="material-symbols-rounded">insights</span>Live Demo</md-outlined-button>
-            </div>
-          </md-elevated-card>
+        </div>
+        <div class="col s12 m4">
+          <ul class="collection">
+            <li class="collection-item"><i class="material-icons left">location_on</i>Jakarta, ID</li>
+            <li class="collection-item"><i class="material-icons left">language</i>you.github.io</li>
+            <li class="collection-item"><i class="material-icons left">phone</i>+62-812-xxx-xxxx</li>
+          </ul>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Skills -->
-    <section id="skills" class="section">
-      <div class="container">
-        <div class="title"><span class="material-symbols-rounded">build</span>Skills</div>
-        <md-elevated-card class="card">
-          <div class="content">
-            <div class="chipset">
-              <md-assist-chip label="Android (Kotlin/Java)" elevated></md-assist-chip>
-              <md-assist-chip label="Node.js/Express" elevated></md-assist-chip>
-              <md-assist-chip label="ClickHouse/MySQL" elevated></md-assist-chip>
-              <md-assist-chip label="TensorFlow Lite" elevated></md-assist-chip>
-              <md-assist-chip label="Jetpack Compose" elevated></md-assist-chip>
-            </div>
-          </div>
-        </md-elevated-card>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="container">
-        <div class="title"><span class="material-symbols-rounded">mail</span>Contact</div>
-        <md-elevated-card class="card">
-          <div class="content contact">
-            <p>Kirim email langsung ke saya:</p>
-            <md-filled-button href="mailto:you@example.com?subject=Kerja%20Sama%20—%20Portfolio">
-              <span class="material-symbols-rounded" slot="icon">send</span>Email Saya
-            </md-filled-button>
-            <div class="links">
-              <a href="#" target="_blank"><span class="material-symbols-rounded">public</span>Website</a>
-              <a href="#" target="_blank"><span class="material-symbols-rounded">person</span>LinkedIn</a>
-              <a href="#" target="_blank"><span class="material-symbols-rounded">code</span>GitHub</a>
-            </div>
-          </div>
-        </md-elevated-card>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">© <span id="year"></span> Nama Kamu</div>
+  <footer class="page-footer blue">
+    <div class="container">
+      © <span id="year"></span> Nama Kamu — All rights reserved.
+      <a class="grey-text text-lighten-4 right" href="#home">Back to top</a>
+    </div>
   </footer>
 
-  <script type="module" src="assets/js/app.js"></script>
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
