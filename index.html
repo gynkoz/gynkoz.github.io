@@ -3,106 +3,180 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio — Material 3</title>
-  <meta name="theme-color" content="#0B57D0">
-
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;600;700&family=Material+Symbols+Rounded:FILL@0..1" rel="stylesheet" />
-  <!-- Material 3 Web Components -->
+  <title>Portfolio — Material 3 Clean</title>
+  <meta name="theme-color" content="#0B57D0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght@400;FILL@0" rel="stylesheet">
   <script type="module" src="https://unpkg.com/@material/web@latest/all.js?module"></script>
-
-  <link rel="stylesheet" href="assets/css/m3.css" />
+  <link rel="stylesheet" href="assets/css/m3-clean.css" />
 </head>
 <body>
-  <md-top-app-bar>
-    <div slot="headline">Nama Kamu</div>
-    <md-icon-button slot="navigation-icon" id="open-drawer">
-      <span class="material-symbols-rounded">menu</span>
-    </md-icon-button>
-    <md-icon-button slot="action-items">
-      <span class="material-symbols-rounded">mail</span>
-    </md-icon-button>
-  </md-top-app-bar>
+  <!-- Top bar (simple, white) -->
+  <header class="appbar">
+    <div class="container appbar-in">
+      <div class="brand">Nama Kamu</div>
+      <nav class="nav">
+        <md-assist-chip label="About" href="#about"></md-assist-chip>
+        <md-assist-chip label="Projects" href="#projects"></md-assist-chip>
+        <md-assist-chip label="Skills" href="#skills"></md-assist-chip>
+        <md-assist-chip label="Contact" href="#contact"></md-assist-chip>
+      </nav>
+      <button id="btn-menu" class="icon-btn" aria-label="Open menu">
+        <span class="material-symbols-rounded">menu</span>
+      </button>
+    </div>
+  </header>
 
+  <!-- Drawer mobile -->
   <md-navigation-drawer id="drawer" type="modal">
-    <md-elevated-button href="#about">About</md-elevated-button>
-    <md-elevated-button href="#projects">Projects</md-elevated-button>
-    <md-elevated-button href="#skills">Skills</md-elevated-button>
-    <md-elevated-button href="#contact">Contact</md-elevated-button>
+    <div class="drawer-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
   </md-navigation-drawer>
 
   <main>
-    <section id="home" class="hero container">
-      <div class="hero-text">
-        <h1>Halo, aku <span class="primary">Nama Kamu</span> 👋</h1>
-        <p class="lead">Engineer / UI-UX / Computer Vision — bikin solusi cepat, elegan, dan scalable.</p>
-        <div class="cta">
-          <md-filled-button href="#projects">
-            <span slot="icon" class="material-symbols-rounded">work</span>
-            Lihat Projects
-          </md-filled-button>
-          <md-tonal-button href="#contact">
-            <span slot="icon" class="material-symbols-rounded">send</span>
-            Kontak
-          </md-tonal-button>
-          <md-assist-chip label="Available for work" elevated></md-assist-chip>
+    <!-- Hero -->
+    <section id="home" class="section hero">
+      <div class="container grid-hero">
+        <div>
+          <h1>Halo, aku <span class="primary">Nama Kamu</span> 👋</h1>
+          <p class="lead">Engineer / UI‑UX / Computer Vision — bikin solusi cepat, elegan, dan scalable.</p>
+          <div class="cta">
+            <md-filled-button href="#projects">
+              <span class="material-symbols-rounded" slot="icon">work</span>Lihat Projects
+            </md-filled-button>
+            <md-tonal-button href="#contact">
+              <span class="material-symbols-rounded" slot="icon">send</span>Kontak
+            </md-tonal-button>
+            <md-assist-chip label="Available for work" elevated></md-assist-chip>
+          </div>
         </div>
-      </div>
-      <div class="hero-media">
-        <img src="assets/img/hero.png" alt="Hero" />
+        <div class="media">
+          <img src="assets/img/hero.png" alt="Hero image" />
+        </div>
       </div>
     </section>
 
-    <section id="about" class="container section">
-      <h2 class="section-title"><span class="material-symbols-rounded">person</span>About</h2>
-      <md-elevated-card class="card">
-        <div class="card-content">
-          <p>Ringkasan 3–4 kalimat tentang pengalamanmu dan value yang kamu tawarkan.</p>
-        </div>
-      </md-elevated-card>
-    </section>
-
-    <section id="projects" class="container section">
-      <h2 class="section-title"><span class="material-symbols-rounded">apps</span>Projects</h2>
-      <div class="grid">
-        <md-elevated-card class="card project">
-          <img src="assets/img/hero.png" alt="project" class="card-media" />
-          <div class="card-content">
-            <h3>Project Satu</h3>
-            <p>Deskripsi singkat project.</p>
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="title"><span class="material-symbols-rounded">person</span>About</div>
+        <md-elevated-card class="card">
+          <div class="content">
+            <p>Tulis ringkasan 3–4 kalimat tentang pengalamanmu (FMCG, Android, CV) dan value yang kamu berikan.
+              Fokus pada dampak, performa, dan reliability.</p>
+            <ul class="bullets">
+              <li>🏆 Hasil terukur (mis. turunkan WAPE 22%).</li>
+              <li>⚡ Performa tinggi & offline‑first di edge.</li>
+              <li>🤝 Kolaborasi dengan brand besar.</li>
+            </ul>
           </div>
         </md-elevated-card>
       </div>
     </section>
 
-    <section id="skills" class="container section">
-      <h2 class="section-title"><span class="material-symbols-rounded">build</span>Skills</h2>
-      <md-elevated-card class="card">
-        <div class="card-content">
-          <md-assist-chip label="Android (Kotlin/Java)" elevated></md-assist-chip>
-          <md-assist-chip label="Node.js" elevated></md-assist-chip>
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="title"><span class="material-symbols-rounded">apps</span>Projects</div>
+        <div class="grid-cards">
+          <md-elevated-card class="project">
+            <img class="media" src="assets/img/hero.png" alt="Project">
+            <div class="content">
+              <h3>People Counting</h3>
+              <p>Traffic, heatmap, journey — real‑time dan akurat untuk ritel.</p>
+              <div class="chips">
+                <md-suggestion-chip label="CV"></md-suggestion-chip>
+                <md-suggestion-chip label="Edge"></md-suggestion-chip>
+              </div>
+            </div>
+            <div class="actions">
+              <md-filled-button href="#" target="_blank"><span slot="icon" class="material-symbols-rounded">link</span>Demo</md-filled-button>
+              <md-outlined-button href="#" target="_blank"><span slot="icon" class="material-symbols-rounded">code</span>Repo</md-outlined-button>
+            </div>
+          </md-elevated-card>
+
+          <md-elevated-card class="project">
+            <img class="media" src="assets/img/hero.png" alt="Project">
+            <div class="content">
+              <h3>Merchandiser App</h3>
+              <p>Android offline‑first: OSA, Planogram, POSM, IR photo.</p>
+              <div class="chips">
+                <md-suggestion-chip label="Android"></md-suggestion-chip>
+                <md-suggestion-chip label="Offline‑first"></md-suggestion-chip>
+              </div>
+            </div>
+            <div class="actions">
+              <md-tonal-button href="#" target="_blank"><span slot="icon" class="material-symbols-rounded">article</span>Case Study</md-tonal-button>
+            </div>
+          </md-elevated-card>
+
+          <md-elevated-card class="project">
+            <img class="media" src="assets/img/hero.png" alt="Project">
+            <div class="content">
+              <h3>Forecast Dashboard</h3>
+              <p>Timeseries KPI (velocity, lead time, bug rate) dengan insight yang actionable.</p>
+              <div class="chips">
+                <md-suggestion-chip label="Analytics"></md-suggestion-chip>
+                <md-suggestion-chip label="Timeseries"></md-suggestion-chip>
+              </div>
+            </div>
+            <div class="actions">
+              <md-outlined-button href="#" target="_blank"><span slot="icon" class="material-symbols-rounded">insights</span>Live Demo</md-outlined-button>
+            </div>
+          </md-elevated-card>
         </div>
-      </md-elevated-card>
+      </div>
     </section>
 
-    <section id="contact" class="container section">
-      <h2 class="section-title"><span class="material-symbols-rounded">mail</span>Contact</h2>
-      <md-elevated-card class="card">
-        <div class="card-content">
-          <md-filled-button href="mailto:you@example.com">
-            <span slot="icon" class="material-symbols-rounded">send</span>Email Saya
-          </md-filled-button>
-        </div>
-      </md-elevated-card>
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="title"><span class="material-symbols-rounded">build</span>Skills</div>
+        <md-elevated-card class="card">
+          <div class="content">
+            <div class="chipset">
+              <md-assist-chip label="Android (Kotlin/Java)" elevated></md-assist-chip>
+              <md-assist-chip label="Node.js/Express" elevated></md-assist-chip>
+              <md-assist-chip label="ClickHouse/MySQL" elevated></md-assist-chip>
+              <md-assist-chip label="TensorFlow Lite" elevated></md-assist-chip>
+              <md-assist-chip label="Jetpack Compose" elevated></md-assist-chip>
+            </div>
+          </div>
+        </md-elevated-card>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="title"><span class="material-symbols-rounded">mail</span>Contact</div>
+        <md-elevated-card class="card">
+          <div class="content contact">
+            <p>Kirim email langsung ke saya:</p>
+            <md-filled-button href="mailto:you@example.com?subject=Kerja%20Sama%20—%20Portfolio">
+              <span class="material-symbols-rounded" slot="icon">send</span>Email Saya
+            </md-filled-button>
+            <div class="links">
+              <a href="#" target="_blank"><span class="material-symbols-rounded">public</span>Website</a>
+              <a href="#" target="_blank"><span class="material-symbols-rounded">person</span>LinkedIn</a>
+              <a href="#" target="_blank"><span class="material-symbols-rounded">code</span>GitHub</a>
+            </div>
+          </div>
+        </md-elevated-card>
+      </div>
     </section>
   </main>
 
-  <footer class="container footer">
-    © <span id="year"></span> Nama Kamu
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Nama Kamu</div>
   </footer>
 
-  <script src="assets/js/m3.js" type="module"></script>
+  <script type="module" src="assets/js/app.js"></script>
 </body>
 </html>

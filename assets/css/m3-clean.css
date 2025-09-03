@@ -1,0 +1,63 @@
+:root{
+  --primary:#0B57D0;
+  --surface:#FFFFFF;
+  --surface-2:#F6F7FB;
+  --on-surface:#1F1F1F;
+  --outline:#CBD0DB;
+  --radius-s:12px; --radius-m:16px; --radius-l:24px;
+  --container:1120px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:'Roboto Flex',system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--surface-2);color:var(--on-surface)}
+
+/* App bar (white) */
+.appbar{position:sticky;top:0;background:var(--surface);border-bottom:1px solid var(--outline);z-index:20}
+.appbar-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-weight:700}
+.nav{display:flex;gap:8px}
+.icon-btn{display:none;border:0;background:transparent;cursor:pointer}
+
+/* Containers */
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 20px}
+.section{padding:40px 0}
+
+/* Hero */
+.grid-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+h1{margin:0 0 10px;font-size:40px;line-height:1.15;letter-spacing:-.3px}
+.primary{color:var(--primary)}
+.lead{font-size:18px;opacity:.9;margin:0 0 16px}
+.cta md-button,.cta md-filled-button,.cta md-tonal-button{margin-right:8px;margin-bottom:8px}
+.media img{width:100%;border-radius:var(--radius-l);display:block;box-shadow:0 6px 28px rgba(0,0,0,.06)}
+
+/* Titles */
+.title{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:700;margin:0 0 14px}
+.title .material-symbols-rounded{color:var(--primary)}
+
+/* Cards & grids */
+.card{border-radius:var(--radius-m);overflow:hidden}
+.card .content{padding:20px}
+.grid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.project .media{width:100%;display:block}
+.project .actions{display:flex;gap:8px;flex-wrap:wrap;padding:0 20px 20px}
+
+/* Lists */
+.bullets{margin:12px 0 0 0;padding-left:18px}
+
+/* Contact */
+.links a{display:inline-flex;align-items:center;gap:6px;margin-right:14px;text-decoration:none;color:var(--primary)}
+
+/* Footer */
+.footer{border-top:1px solid var(--outline);background:var(--surface);padding:28px 0;margin-top:20px}
+
+/* Responsive */
+@media (max-width:960px){
+  .grid-hero{grid-template-columns:1fr}
+  .grid-cards{grid-template-columns:1fr 1fr}
+  .nav{display:none}
+  .icon-btn{display:block}
+}
+@media (max-width:640px){
+  .grid-cards{grid-template-columns:1fr}
+  h1{font-size:32px}
+}
