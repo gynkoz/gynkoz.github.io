@@ -4,17 +4,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Smooth scroll for internal links
+  // Smooth scroll (semua anchor internal)
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        window.scrollTo({ top: target.offsetTop - 56, behavior: 'smooth' });
+      const id = a.getAttribute('href');
+      if (id.length > 1) { // biar ga error kalau cuma "#"
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+
+          const yOffset = -80; // offset utk navbar
+          const y = target.getBoundingClientRect().top + window.scrollY + yOffset;
+
+          window.scrollTo({
+            top: y,
+            behavior: 'smooth'
+          });
+
+          // Tutup sidenav kalau di mobile
+          const sidenavInst = M.Sidenav.getInstance(document.querySelector('.sidenav'));
+          if (sidenavInst) sidenavInst.close();
+        }
       }
     });
   });
 
+  
 // CV download (Google Docs link)
 const btnCv = document.getElementById('btn-download-cv');
 if (btnCv) {
