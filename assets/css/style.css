@@ -1,0 +1,59 @@
+/* Material Blue theme tweaks */
+:root {
+  --md-blue: #2196F3;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+}
+
+.navbar-fixed nav .brand-logo {
+  font-weight: 700;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.hero {
+  padding: 64px 0;
+}
+
+.hero-title {
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.hero-cta .btn-large {
+  margin-right: 12px;
+  margin-top: 12px;
+}
+
+.hero-img {
+  max-height: 320px;
+  border-radius: 12px;
+}
+
+.chips-container .chip {
+  margin: 6px;
+  background: #E3F2FD;
+  color: #1565C0;
+  font-weight: 600;
+}
+
+.card .chip {
+  margin-right: 6px;
+}
+
+.page-footer {
+  padding-top: 8px;
+}
+
+@media (max-width: 600px) {
+  .hero { padding: 40px 0; }
+  .hero-img { max-height: 220px; }
+}
