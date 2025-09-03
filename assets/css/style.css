@@ -1,59 +1,114 @@
-/* Material Blue theme tweaks */
-:root {
-  --md-blue: #2196F3;
+
+/* === Material 3 Skin for Materialize structure === */
+:root{
+  --m3-primary:#0B57D0;             /* Primary Blue (M3) */
+  --m3-on-primary:#FFFFFF;
+  --m3-surface:#FFFFFF;
+  --m3-surface-2:#F6F7FB;           /* subtle grey background */
+  --m3-on-surface:#1F1F1F;
+  --m3-outline:#D7DCE5;
+  --rad-s:12px; --rad-m:16px; --rad-l:24px;
+  --elev-1:0 2px 8px rgba(0,0,0,.06);
+  --elev-2:0 6px 18px rgba(0,0,0,.08);
 }
 
-body {
+html,body{height:100%}
+body{
+  margin:0;
   font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+  background: var(--m3-surface-2);
+  color: var(--m3-on-surface);
 }
 
-.navbar-fixed nav .brand-logo {
-  font-weight: 700;
+/* Navbar → flat white app bar */
+.navbar-fixed nav{
+  background: var(--m3-surface) !important;
+  box-shadow: none;
+  border-bottom: 1px solid var(--m3-outline);
+}
+.navbar-fixed nav .brand-logo{ color: var(--m3-on-surface); font-weight:700; }
+.navbar-fixed nav ul li a{ color: var(--m3-on-surface); }
+.sidenav .user-view, .sidenav a{ border-radius: var(--rad-s); }
+
+/* Section spacing */
+.section{ padding: 48px 0; }
+.section.white{ background: var(--m3-surface); }
+.section.blue, .blue.lighten-5{ background: var(--m3-surface-2) !important; }
+.section-title{
+  display:flex; align-items:center; gap:10px;
+  font-weight:800; letter-spacing:-.2px;
+  color: var(--m3-on-surface);
 }
 
-.section-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
+/* Hero */
+.hero{ background: var(--m3-surface); }
+.hero-title{ font-weight:900; line-height:1.1; letter-spacing:-.4px; }
+.hero-cta .btn-large{ margin-right:12px; margin-top:12px; border-radius: var(--rad-m); box-shadow: var(--elev-1); }
+.hero-img{
+  max-height: 340px; border-radius: var(--rad-l);
+  box-shadow: var(--elev-2);
 }
 
-.hero {
-  padding: 64px 0;
+/* Buttons → M3 look */
+.btn, .btn-large, .btn-small{
+  background-color: var(--m3-primary) !important;
+  color: var(--m3-on-primary) !important;
+  text-transform:none; border-radius: var(--rad-m);
+}
+.btn.white{ background:#fff !important; color: var(--m3-primary) !important; border:1px solid var(--m3-outline); }
+.btn-flat{ color: var(--m3-primary) !important; border-radius: var(--rad-m); }
+.btn i.left, .btn-large i.left{ margin-right:8px; }
+
+/* Cards */
+.card{
+  border-radius: var(--rad-m);
+  box-shadow: var(--elev-1);
+  overflow:hidden;
+  background: var(--m3-surface);
+  border: 1px solid var(--m3-outline);
+}
+.card-image img{ display:block; }
+.card .card-content{ padding: 16px 18px; }
+.card .card-title{ font-weight:700; }
+.card-reveal{ background: var(--m3-surface); }
+
+/* Chips → M3 rounded + tonal */
+.chip{
+  border-radius: 999px;
+  background: #E8F0FE;             /* tonal blue container */
+  color: #1557B0;
+  font-weight:600;
+  border: 1px solid #D5E3FF;
+}
+.chips-container .chip{ margin:6px; }
+
+/* Lists / collections */
+.collection{
+  border-radius: var(--rad-m);
+  box-shadow: var(--elev-1);
+  border: 1px solid var(--m3-outline);
+  overflow:hidden;
+}
+.collection .collection-item{ border-bottom: 1px solid var(--m3-outline); }
+.collection .collection-item:last-child{ border-bottom:none; }
+
+/* Footer */
+.page-footer{
+  background: var(--m3-surface);
+  color: var(--m3-on-surface);
+  border-top: 1px solid var(--m3-outline);
+  box-shadow: none;
 }
 
-.hero-title {
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.5px;
-}
+/* Links */
+a{ color: var(--m3-primary); }
+a.btn, a.btn-large, a.btn-small{ color: var(--m3-on-primary) !important; }
 
-.hero-cta .btn-large {
-  margin-right: 12px;
-  margin-top: 12px;
-}
+/* Utilities */
+.z-depth-2{ box-shadow: var(--elev-2) !important; }
+.responsive-img{ border-radius: var(--rad-m); }
 
-.hero-img {
-  max-height: 320px;
-  border-radius: 12px;
-}
-
-.chips-container .chip {
-  margin: 6px;
-  background: #E3F2FD;
-  color: #1565C0;
-  font-weight: 600;
-}
-
-.card .chip {
-  margin-right: 6px;
-}
-
-.page-footer {
-  padding-top: 8px;
-}
-
-@media (max-width: 600px) {
-  .hero { padding: 40px 0; }
-  .hero-img { max-height: 220px; }
+/* Responsive */
+@media (max-width: 600px){
+  .hero-img{ max-height: 220px; }
 }
