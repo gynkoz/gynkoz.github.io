@@ -15,11 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Dummy CV download
-  const btnCv = document.getElementById('btn-download-cv');
-  if (btnCv) {
-    btnCv.addEventListener('click', () => {
-      M.toast({html: 'Ganti link CV kamu di main.js'});
-    });
-  }
-});
+// CV download (Google Docs link)
+const btnCv = document.getElementById('btn-download-cv');
+if (btnCv) {
+  btnCv.addEventListener('click', () => {
+    window.open(
+      "https://docs.google.com/document/d/1LV61tOvi8_LSL7fom3hlyUVSM348SWBMf6ScDdkh4QQ/export?format=pdf",
+      "_blank"
+    );
+  });
+}
