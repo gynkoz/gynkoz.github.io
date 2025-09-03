@@ -72,15 +72,22 @@ body{
 .card .card-title{ font-weight:700; }
 .card-reveal{ background: var(--m3-surface); }
 
-/* Chips → M3 rounded + tonal */
-.chip{
+/* Chips → M3 clean */
+.chip {
   border-radius: 999px;
-  background: #E8F0FE;             /* tonal blue container */
+  background: #E8F0FE;           /* tonal blue container */
   color: #1557B0;
-  font-weight:600;
-  border: 1px solid #D5E3FF;
+  font-weight: 600;
+  border: none;                  /* hilangkan border */
+  box-shadow: none !important;   /* hilangkan shadow bawaan */
+  padding: 0 12px;
+  height: 28px;                  /* lebih ramping */
+  line-height: 28px;             /* teks center */
+  font-size: 0.85rem;
 }
-.chips-container .chip{ margin:6px; }
+.chips-container .chip {
+  margin: 4px;
+}
 
 /* Lists / collections */
 .collection{
