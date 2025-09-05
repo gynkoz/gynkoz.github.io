@@ -259,62 +259,125 @@
 <!--      </div>-->
 <!--  </section>-->
 
-  <div class="skill-kits">
-      <!-- Mobile -->
-      <div class="kit-card">
-          <h5 class="kit-title"><i class="material-icons">smartphone</i><span data-i18n="kit.mobile">Mobile</span></h5>
-          <p class="kit-sub" data-i18n="kit.mobile.sub">Core mobile stack for modern Android apps.</p>
-          <div class="kit-chips">
-              <span class="kit-chip kc-blue"><i class="material-icons">android</i>Android (Kotlin/Java)</span>
-              <span class="kit-chip kc-green"><i class="material-icons">palette</i>Jetpack Compose</span>
-              <span class="kit-chip kc-grey"><i class="material-icons">view_quilt</i>Material/Design System</span>
-          </div>
-      </div>
+  <section id="skills" class="section white">
+      <div class="container">
+          <h3 class="section-title blue-text text-darken-2">
+              <i class="material-icons left">build</i>
+              <span data-i18n="skills.title">Skills</span>
+          </h3>
 
-      <!-- Backend -->
-      <div class="kit-card">
-          <h5 class="kit-title"><i class="material-icons">settings</i><span data-i18n="kit.backend">Backend</span></h5>
-          <p class="kit-sub" data-i18n="kit.backend.sub">APIs that are reliable, secure, and scalable.</p>
-          <div class="kit-chips">
-              <span class="kit-chip kc-cyan"><i class="material-icons">memory</i>Node.js / Express</span>
-              <span class="kit-chip kc-grey"><i class="material-icons">code</i>PHP</span>
-              <span class="kit-chip kc-blue"><i class="material-icons">security</i>Auth/JWT</span>
-          </div>
-      </div>
+          <div class="row skills-two-col">
+              <!-- KOLom KIRI (m7): daftar skills kamu yang sekarang -->
+              <div class="col s12 m7">
+                  <!-- ====== COPY daftar kategori & chips yang sudah jadi di sini ====== -->
+                  <!-- contoh singkat -->
+                  <div class="skill-cat">
+                      <i class="material-icons cat-icon">smartphone</i><h5>Mobile</h5>
+                  </div>
+                  <div class="skills-chips">
+                      <div class="chip chip-blue chip-strong">
+                          <i class="material-icons">android</i> Android (Kotlin/Java)
+                          <span class="level">Expert</span>
+                      </div>
+                      <div class="chip chip-green">
+                          <i class="material-icons">palette</i> Jetpack Compose
+                      </div>
+                  </div>
 
-      <!-- Database -->
-      <div class="kit-card">
-          <h5 class="kit-title"><i class="material-icons">dns</i><span data-i18n="kit.db">Database</span></h5>
-          <p class="kit-sub" data-i18n="kit.db.sub">Fast analytics + reliable transactional storage.</p>
-          <div class="kit-chips">
-              <span class="kit-chip kc-purple"><i class="material-icons">timeline</i>ClickHouse</span>
-              <span class="kit-chip kc-orange"><i class="material-icons">table_chart</i>MySQL</span>
-              <span class="kit-chip kc-grey"><i class="material-icons">cloud_sync</i>ETL/Batch Jobs</span>
-          </div>
-      </div>
+                  <div class="skill-cat">
+                      <i class="material-icons cat-icon">settings</i><h5>Backend</h5>
+                  </div>
+                  <div class="skills-chips">
+                      <div class="chip chip-cyan"><i class="material-icons">memory</i> Node.js / Express</div>
+                      <div class="chip chip-grey"><i class="material-icons">code</i> PHP</div>
+                  </div>
 
-      <!-- AI / Computer Vision -->
-      <div class="kit-card">
-          <h5 class="kit-title"><i class="material-icons">psychology</i><span data-i18n="kit.ai">AI / Computer Vision</span></h5>
-          <p class="kit-sub" data-i18n="kit.ai.sub">Practical AI on-device & at the edge.</p>
-          <div class="kit-chips">
-              <span class="kit-chip kc-purple"><i class="material-icons">precision_manufacturing</i>TFLite</span>
-              <span class="kit-chip kc-purple"><i class="material-icons">center_focus_strong</i>Computer Vision</span>
-              <span class="kit-chip kc-blue"><i class="material-icons">speed</i>Realtime/Edge</span>
-          </div>
-      </div>
+                  <div class="skill-cat">
+                      <i class="material-icons cat-icon">dns</i><h5>Database</h5>
+                  </div>
+                  <div class="skills-chips">
+                      <div class="chip chip-purple"><i class="material-icons">timeline</i> ClickHouse</div>
+                      <div class="chip chip-orange"><i class="material-icons">table_chart</i> MySQL</div>
+                  </div>
 
-      <!-- UI / UX -->
-      <div class="kit-card">
-          <h5 class="kit-title"><i class="material-icons">brush</i><span data-i18n="kit.uiux">UI / UX</span></h5>
-          <p class="kit-sub" data-i18n="kit.uiux.sub">Usability-first with clean, consistent interfaces.</p>
-          <div class="kit-chips">
-              <span class="kit-chip kc-orange"><i class="material-icons">view_quilt</i>Design Systems</span>
-              <span class="kit-chip kc-orange"><i class="material-icons">gesture</i>Prototyping</span>
-              <span class="kit-chip kc-blue"><i class="material-icons">bolt</i>Microinteractions</span>
-          </div>
+                  <div class="skill-cat">
+                      <i class="material-icons cat-icon">psychology</i><h5>AI / Computer Vision</h5>
+                  </div>
+                  <div class="skills-chips">
+                      <div class="chip chip-purple"><i class="material-icons">precision_manufacturing</i> TensorFlow Lite</div>
+                      <div class="chip chip-purple"><i class="material-icons">center_focus_strong</i> Computer Vision</div>
+                  </div>
+
+                  <div class="skill-cat">
+                      <i class="material-icons cat-icon">brush</i><h5>UI / UX</h5>
+                  </div>
+                  <div class="skills-chips">
+                      <div class="chip chip-orange"><i class="material-icons">view_quilt</i> Design Systems</div>
+                      <div class="chip chip-orange"><i class="material-icons">gesture</i> Prototyping</div>
+                  </div>
+              </div>
+
+              <!-- KOLOM KANAN (m5): ringkasan & visual -->
+              <div class="skill-kits">
+                  <!-- Mobile -->
+                  <div class="kit-card">
+                      <h5 class="kit-title"><i class="material-icons">smartphone</i><span data-i18n="kit.mobile">Mobile</span></h5>
+                      <p class="kit-sub" data-i18n="kit.mobile.sub">Core mobile stack for modern Android apps.</p>
+                      <div class="kit-chips">
+                          <span class="kit-chip kc-blue"><i class="material-icons">android</i>Android (Kotlin/Java)</span>
+                          <span class="kit-chip kc-green"><i class="material-icons">palette</i>Jetpack Compose</span>
+                          <span class="kit-chip kc-grey"><i class="material-icons">view_quilt</i>Material/Design System</span>
+                      </div>
+                  </div>
+
+                  <!-- Backend -->
+                  <div class="kit-card">
+                      <h5 class="kit-title"><i class="material-icons">settings</i><span data-i18n="kit.backend">Backend</span></h5>
+                      <p class="kit-sub" data-i18n="kit.backend.sub">APIs that are reliable, secure, and scalable.</p>
+                      <div class="kit-chips">
+                          <span class="kit-chip kc-cyan"><i class="material-icons">memory</i>Node.js / Express</span>
+                          <span class="kit-chip kc-grey"><i class="material-icons">code</i>PHP</span>
+                          <span class="kit-chip kc-blue"><i class="material-icons">security</i>Auth/JWT</span>
+                      </div>
+                  </div>
+
+                  <!-- Database -->
+                  <div class="kit-card">
+                      <h5 class="kit-title"><i class="material-icons">dns</i><span data-i18n="kit.db">Database</span></h5>
+                      <p class="kit-sub" data-i18n="kit.db.sub">Fast analytics + reliable transactional storage.</p>
+                      <div class="kit-chips">
+                          <span class="kit-chip kc-purple"><i class="material-icons">timeline</i>ClickHouse</span>
+                          <span class="kit-chip kc-orange"><i class="material-icons">table_chart</i>MySQL</span>
+                          <span class="kit-chip kc-grey"><i class="material-icons">cloud_sync</i>ETL/Batch Jobs</span>
+                      </div>
+                  </div>
+
+                  <!-- AI / Computer Vision -->
+                  <div class="kit-card">
+                      <h5 class="kit-title"><i class="material-icons">psychology</i><span data-i18n="kit.ai">AI / Computer Vision</span></h5>
+                      <p class="kit-sub" data-i18n="kit.ai.sub">Practical AI on-device & at the edge.</p>
+                      <div class="kit-chips">
+                          <span class="kit-chip kc-purple"><i class="material-icons">precision_manufacturing</i>TFLite</span>
+                          <span class="kit-chip kc-purple"><i class="material-icons">center_focus_strong</i>Computer Vision</span>
+                          <span class="kit-chip kc-blue"><i class="material-icons">speed</i>Realtime/Edge</span>
+                      </div>
+                  </div>
+
+                  <!-- UI / UX -->
+                  <div class="kit-card">
+                      <h5 class="kit-title"><i class="material-icons">brush</i><span data-i18n="kit.uiux">UI / UX</span></h5>
+                      <p class="kit-sub" data-i18n="kit.uiux.sub">Usability-first with clean, consistent interfaces.</p>
+                      <div class="kit-chips">
+                          <span class="kit-chip kc-orange"><i class="material-icons">view_quilt</i>Design Systems</span>
+                          <span class="kit-chip kc-orange"><i class="material-icons">gesture</i>Prototyping</span>
+                          <span class="kit-chip kc-blue"><i class="material-icons">bolt</i>Microinteractions</span>
+                      </div>
+                  </div>
+              </div>
+          </div> <!-- /row -->
       </div>
-  </div>
+  </section>
+
 
 
   <!-- Contact -->
