@@ -42,9 +42,7 @@
       <div class="row valign-wrapper">
         <div class="col s12 m6">
           <h1 class="hero-title"><span data-i18n="hero.hi">Hi, I'm</span> <span class="blue-text text-darken-2">Andreafif Cyto Prasadana Sutrisno</span> 👋</h1>
-          <p class="flow-text grey-text text-darken-3" data-i18n="hero.pitch">
-            Membangun aplikasi Android & backend sejak 2018, berfokus pada UI/UX yang intuitif, arsitektur solid, dan integrasi data real-time untuk mendukung kebutuhan bisnis skala besar.
-          </p>
+          <p class="flow-text grey-text text-darken-3" data-i18n="hero.pitch"></p>
           <div class="hero-cta">
             <a href="#projects" class="btn-large blue waves-effect waves-light" id="cta-projects"><i class="material-icons left">work</i><span data-i18n="cta.projects">Lihat Projects</span></a>
             <a href="#contact" class="btn-large blue waves-effect waves-light" id="cta-contact"><i class="material-icons left">mail</i><span data-i18n="cta.contact">Kontak</span></a>
@@ -62,23 +60,55 @@
 
   <!-- About -->
   <section id="about" class="section white">
-    <div class="container">
-      <div class="row">
-        <div class="col s12">
-          <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">person</i><span data-i18n="about.title">About</span></h3>
-          <p class="grey-text text-darken-3" data-i18n="about.lead"></p>
-          <ul class="collection z-depth-1">
-            <li class="collection-item" data-i18n="about.h1"></li>
-            <li class="collection-item" data-i18n="about.h2"></li>
-            <li class="collection-item" data-i18n="about.h3"></li>
-            <li class="collection-item" data-i18n="about.h4"></li>
-            <li class="collection-item" data-i18n="about.h5"></li>
-            <li class="collection-item" data-i18n="about.h6"></li>
-          </ul>
-        </div>
+      <div class="container">
+          <div class="row">
+              <div class="col s12">
+                  <h3 class="section-title blue-text text-darken-2">
+                      <i class="material-icons left">person</i>
+                      <span data-i18n="about.title">About</span>
+                  </h3>
+
+                  <!-- Lead panel (lebih “bernyawa”) -->
+                  <div class="about-lead-panel card-panel">
+                      <p class="grey-text text-darken-3" data-i18n="about.lead">
+                          Android & Backend Developer yang fokus pada UI/UX intuitif, arsitektur scalable, dan real-time data.
+                      </p>
+                  </div>
+
+                  <!-- Stat chips (gimmick ringan) -->
+                  <div class="about-stats">
+                      <div class="chip stat-chip" data-i18n="stats.years">7+ yrs</div>
+                      <div class="chip stat-chip alt" data-i18n="stats.efficiency">+50% efficiency</div>
+                      <div class="chip stat-chip neutral" data-i18n="stats.users">1K+ field users</div>
+                      <div class="chip stat-chip" data-i18n="stats.brands">15+ brands</div>
+                  </div>
+
+                  <!-- Highlights (1 baris, auto-ellipsis) -->
+                  <ul class="collection z-depth-1 about-list">
+                      <li class="collection-item about-item">
+                          <span class="about-text" data-i18n="about.h1"></span>
+                      </li>
+                      <li class="collection-item about-item">
+                          <span class="about-text" data-i18n="about.h2"></span>
+                      </li>
+                      <li class="collection-item about-item">
+                          <span class="about-text" data-i18n="about.h3"></span>
+                      </li>
+                      <li class="collection-item about-item">
+                          <span class="about-text" data-i18n="about.h4"></span>
+                      </li>
+                      <li class="collection-item about-item">
+                          <span class="about-text" data-i18n="about.h5"></span>
+                      </li>
+                      <li class="collection-item about-item">
+                          <span class="about-text" data-i18n="about.h6"></span>
+                      </li>
+                  </ul>
+              </div>
+          </div>
       </div>
-    </div>
   </section>
+
 
   <!-- Projects -->
   <section id="projects" class="section blue lighten-5">
@@ -217,12 +247,12 @@
         'cta.cv': 'CV',
         'about.title': 'About',
         'about.lead': 'I’m an Android & Backend Developer passionate about turning complex ideas into fast, secure, and user-friendly applications. With 7+ years of experience in FMCG, analytics, and mobile systems, I combine intuitive UI/UX design with scalable architecture to deliver real business impact. My mission is simple: to build technology that is practical, impactful, and reliable.',
-        "about.h1": "🏆 Efficiency Gains — Achieved up to 50% improvement in merchandiser efficiency, significantly reducing manual verification time.",
-        "about.h2": "🚀 Performance & Scalability — Designed offline-first, scalable, and real-time analytics applications supporting thousands of field users simultaneously, with strong focus on speed and data security.",
-        "about.h3": "🤝 Collaboration with Major Clients — Worked with leading national and multinational companies such as Unilever, Nestlé, Sari Roti, SGM, AQUA, Kanzler, Beiersdorf, L’Oréal, Godrej, Ajinomoto, Sunpride, Perfetti, Anchor, Sosro, ICI, NSF, and more.",
-        "about.h4": "📊 Data-Driven Decision — Built interactive analytics dashboards enabling clients to make fast and accurate data-driven decisions.",
-        "about.h5": "🔒 Security & Reliability — Focused on data security and high performance, ensuring applications remain stable across thousands of field devices.",
-        "about.h6": "🌍 National Impact — Supported the operations of thousands of merchandisers across Indonesia with efficient and user-friendly systems.",
+        "about.h1": "🏆 +50% efficiency — manual verification time slashed.",
+        "about.h2": "🚀 Offline-first & scalable — supports thousands in real time.",
+        "about.h3": "🤝 Major clients — Unilever, Nestlé, Sari Roti, AQUA, etc.",
+        "about.h4": "📊 Interactive dashboards — faster data-driven decisions.",
+        "about.h5": "🔒 Security & reliability — stable across thousands of devices.",
+        "about.h6": "🌍 National impact — supporting thousands of merchandisers.",
         'projects.title': 'Projects',
         'proj.demo': 'Demo / Repo',
         'proj.case': 'Case Study',
@@ -239,7 +269,11 @@
         'contact.email': 'Email Me',
         'contact.dm': 'Or DM:',
         'footer.rights': 'All rights reserved.',
-        'footer.top': 'Back to top'
+        'footer.top': 'Back to top',
+        'stats.years':'7+ yrs',
+        'stats.efficiency':'+50% efficiency',
+        'stats.users':'1K+ field users',
+        'stats.brands':'15+ brands',
       },
       id: {
         'label.indonesian': 'Indonesia',
@@ -251,12 +285,12 @@
         'cta.cv': 'CV',
         'about.title': 'About',
         'about.lead': 'Saya adalah Android & Backend Developer yang senang mengubah ide kompleks menjadi aplikasi cepat, aman, dan mudah digunakan. Dengan lebih dari 7 tahun pengalaman di FMCG, analitik, dan sistem mobile, saya memadukan desain UI/UX yang intuitif dengan arsitektur yang scalable untuk menciptakan solusi nyata bagi bisnis. Misi saya sederhana: menghadirkan teknologi yang praktis, berdampak, dan bisa diandalkan.',
-        "about.h1": "🏆 Efisiensi Kerja — Meningkatkan efisiensi kerja merchandiser hingga 50%, sekaligus mengurangi waktu verifikasi manual secara signifikan.",
-        "about.h2": "🚀 Performa & Skalabilitas — Merancang aplikasi offline-first, scalable, dan analitik real-time yang mampu digunakan ribuan user secara bersamaan di lapangan, dengan fokus pada kecepatan dan keamanan data.",
-        "about.h3": "🤝 Kolaborasi dengan Klien Besar — Berpengalaman bekerja sama dengan perusahaan nasional & multinasional seperti Unilever, Nestlé, Sari Roti, SGM, AQUA, Kanzler, Beiersdorf, L’Oréal, Godrej, Ajinomoto, Sunpride, Perfetti, Anchor, Sosro, ICI, NSF, dan lainnya.",
-        "about.h4": "📊 Data-Driven Decision — Membangun dashboard analitik interaktif yang membantu klien membuat keputusan berbasis data secara cepat dan akurat.",
-        "about.h5": "🔒 Keamanan & Keandalan — Fokus pada keamanan data dan performa tinggi, memastikan aplikasi stabil digunakan di ribuan perangkat lapangan.",
-        "about.h6": "🌍 Impact Nasional — Mendukung operasional ribuan merchandiser di seluruh Indonesia dengan sistem yang efisien dan mudah digunakan.",
+        "about.h1": "🏆 Efisiensi +50% — verifikasi manual berkurang drastis.",
+        "about.h2": "🚀 Offline-first & scalable — mendukung ribuan user real-time.",
+        "about.h3": "🤝 Klien besar — Unilever, Nestlé, Sari Roti, AQUA, dll.",
+        "about.h4": "📊 Dashboard interaktif — keputusan berbasis data lebih cepat.",
+        "about.h5": "🔒 Keamanan & stabilitas — andal di ribuan perangkat.",
+        "about.h6": "🌍 Dampak nasional — mendukung ribuan merchandiser di Indonesia.",
         'projects.title': 'Projects',
         'proj.demo': 'Demo / Repo',
         'proj.case': 'Studi Kasus',
@@ -273,7 +307,11 @@
         'contact.email': 'Email Saya',
         'contact.dm': 'Atau DM:',
         'footer.rights': 'All rights reserved.',
-        'footer.top': 'Kembali ke atas'
+        'footer.top': 'Kembali ke atas',
+        'stats.years':'7+ tahun',
+        'stats.efficiency':'+50% efisiensi',
+        'stats.users':'1K+ pengguna lapangan',
+        'stats.brands':'15+ brand+'
       }
     };
 

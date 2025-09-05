@@ -119,3 +119,37 @@ a.btn, a.btn-large, a.btn-small{ color: var(--m3-on-primary) !important; }
 @media (max-width: 600px){
   .hero-img{ max-height: 220px; }
 }
+
+/* ABOUT — lead panel + stat chips + one-line highlights */
+.about-lead-panel{
+    border-left:4px solid #1e88e5;
+    background:#e3f2fd;
+    padding:14px 16px;
+    border-radius:10px;
+    margin:10px 0 16px;
+}
+.about-stats{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+.stat-chip.chip{
+    background:#e8f5e9; color:#1b5e20; font-weight:600;
+    border:1px solid #c8e6c9;
+}
+.stat-chip.alt   { background:#fff3e0; color:#e65100; border-color:#ffe0b2; }
+.stat-chip.neutral{ background:#ede7f6; color:#4527a0; border-color:#d1c4e9; }
+
+.collection.about-list .collection-item{
+    display:flex; align-items:center;
+    padding:12px 16px; min-height:44px;
+    background:#fff; border:1px solid #e0e0e0;
+}
+.collection.about-list .collection-item + .collection-item{ border-top:none; }
+.collection.about-list{ border-radius:12px; overflow:hidden; }
+
+/* satu baris, kalau kepanjangan akan di-ellipsis */
+.about-item .about-text{
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    width:100%; line-height:1.4;
+}
+
+/* (opsional) sedikit mengecilkan font highlight */
+.collection.about-list .collection-item{ font-size:0.98rem; }
+
