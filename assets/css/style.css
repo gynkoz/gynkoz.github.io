@@ -156,27 +156,67 @@ a.btn, a.btn-large, a.btn-small{ color: var(--m3-on-primary) !important; }
 
 
 
-/* ==== Skills (Materialize-friendly) ==== */
-.skills-wrap { display: grid; gap: 18px; margin-top: 8px; }
+/*!* ==== Skills (Materialize-friendly) ==== *!*/
+/*.skills-wrap { display: grid; gap: 18px; margin-top: 8px; }*/
 
-.skill-cat { display: flex; align-items: center; gap: 8px; margin: 4px 0 6px; }
-.skill-cat .cat-icon { font-size: 20px; color: #1e88e5; }
-.skill-cat h5 { margin: 0; font-size: 1.15rem; color: #1e88e5; font-weight: 700; }
+/*.skill-cat { display: flex; align-items: center; gap: 8px; margin: 4px 0 6px; }*/
+/*.skill-cat .cat-icon { font-size: 20px; color: #1e88e5; }*/
+/*.skill-cat h5 { margin: 0; font-size: 1.15rem; color: #1e88e5; font-weight: 700; }*/
 
-.skills-chips { display: flex; flex-wrap: wrap; gap: 10px; }
-.skills-chips .chip { margin: 0; display: inline-flex; align-items: center; gap: 6px; }
-.skills-chips .chip i { font-size: 18px; line-height: 18px; }
+/*.skills-chips { display: flex; flex-wrap: wrap; gap: 10px; }*/
+/*.skills-chips .chip { margin: 0; display: inline-flex; align-items: center; gap: 6px; }*/
+/*.skills-chips .chip i { font-size: 18px; line-height: 18px; }*/
 
-/* warna varian chip (pilih seperlunya) */
-.chip-blue  { background: #e3f2fd; color: #0d47a1; }
-.chip-green { background: #e8f5e9; color: #1b5e20; }
-.chip-cyan  { background: #e0f7fa; color: #006064; }
-.chip-orange{ background: #fff3e0; color: #e65100; }
-.chip-purple{ background: #ede7f6; color: #4527a0; }
-.chip-grey  { background: #eceff1; color: #37474f; }
-.chip-strong{ box-shadow: 0 0 0 2px rgba(30,136,229,.16); } /* highlight skill utama */
+/*!* warna varian chip (pilih seperlunya) *!*/
+/*.chip-blue  { background: #e3f2fd; color: #0d47a1; }*/
+/*.chip-green { background: #e8f5e9; color: #1b5e20; }*/
+/*.chip-cyan  { background: #e0f7fa; color: #006064; }*/
+/*.chip-orange{ background: #fff3e0; color: #e65100; }*/
+/*.chip-purple{ background: #ede7f6; color: #4527a0; }*/
+/*.chip-grey  { background: #eceff1; color: #37474f; }*/
+/*.chip-strong{ box-shadow: 0 0 0 2px rgba(30,136,229,.16); } !* highlight skill utama *!*/
 
-/* badge level kecil */
-.level { font-weight: 700; font-size: .75rem; opacity: .9; padding: 2px 6px; border-radius: 8px; background: rgba(0,0,0,.08); }
+/*!* badge level kecil *!*/
+/*.level { font-weight: 700; font-size: .75rem; opacity: .9; padding: 2px 6px; border-radius: 8px; background: rgba(0,0,0,.08); }*/
 
 
+/* ===== Skills: 2-column summary ===== */
+.skills-two-col { margin-top: 12px; }
+
+.summary-card {
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+
+.summary-title { margin: 0 0 6px; font-weight: 700; }
+
+.summary-lead { margin: 0 0 12px; color: #607d8b; }
+
+/* pakai chip statistik yang sudah ada */
+.summary-stats { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.summary-stats .chip { margin: 0; font-weight: 700; }
+
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(90px, 1fr));
+    gap: 10px;
+}
+
+.logo-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 12px; border-radius: 999px; font-weight: 600;
+    border: 1px solid #e0e0e0; background: #fff;
+}
+.logo-pill i { font-size: 18px; }
+
+/* varian warna ringan untuk logo pill */
+.lp-blue   { background: #e3f2fd; color: #0d47a1; border-color: #bbdefb; }
+.lp-green  { background: #e8f5e9; color: #1b5e20; border-color: #c8e6c9; }
+.lp-purple { background: #ede7f6; color: #4527a0; border-color: #d1c4e9; }
+.lp-orange { background: #fff3e0; color: #e65100; border-color: #ffe0b2; }
+.lp-cyan   { background: #e0f7fa; color: #006064; border-color: #b2ebf2; }
+
+/* responsif: rapatkan di layar kecil */
+@media (max-width: 600px){
+    .logo-grid { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+}
