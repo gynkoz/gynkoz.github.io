@@ -19,65 +19,40 @@
   <meta property="og:title" content="Portfolio — Andreafif Cyto Prasadana Sutrisno">
   <meta property="og:description" content="Portofolio Material Design — tampilkan proyek, skill, dan kontak.">
   <meta property="og:type" content="website">
+
+  <style>
+    /* === Language Toggle (top-right) === */
+    .lang-toggle{position:fixed; top:14px; right:14px; z-index:1000; display:flex; gap:8px; align-items:center; background:#fff; border-radius:999px; padding:4px; box-shadow:0 6px 18px rgba(0,0,0,.12)}
+    .lang-btn{border:none; background:transparent; border-radius:999px; padding:6px 10px; font-weight:600; cursor:pointer; color:#1565c0}
+    .lang-btn[aria-pressed="true"]{background:#e3f2fd; color:#0d47a1}
+    .lang-flag{font-size:16px; margin-right:6px}
+    @media(max-width:600px){ .lang-toggle{top:10px; right:10px; padding:3px} .lang-btn{padding:6px 8px} }
+  </style>
 </head>
 <body class="blue lighten-5">
-  <!-- Navbar -->
-<!--   <div class="navbar-fixed">
-    <nav class="blue">
-      <div class="nav-wrapper container">
-        <a href="#home" class="brand-logo"></a>
-        <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li>
-            <a
-              id="btn-download-cv"
-              class="btn white waves-effect blue-text text-darken-2"
-              href="https://docs.google.com/document/d/1LV61tOvi8_LSL7fom3hlyUVSM348SWBMf6ScDdkh4QQ/export?format=pdf"
-              target="_blank" rel="noopener"
-            >
-              <i class="material-icons left">file_download</i>CV
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div> -->
+  <!-- Lang Toggle -->
+  <div class="lang-toggle" role="group" aria-label="Language toggle">
+    <button class="lang-btn" id="btn-id" data-lang="id" aria-pressed="false" title="Bahasa Indonesia"><span class="lang-flag">🇮🇩</span><span data-i18n="label.indonesian">Indonesia</span></button>
+    <button class="lang-btn" id="btn-en" data-lang="en" aria-pressed="false" title="English"><span class="lang-flag">🇬🇧</span><span data-i18n="label.english">English</span></button>
+  </div>
 
-  <!-- Mobile Nav -->
-<!--   <ul class="sidenav" id="mobile-nav">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul> -->
+  <!-- Navbar (optional original is commented) -->
+  <!-- keep as-is -->
 
   <!-- Hero -->
   <section id="home" class="section hero blue lighten-4">
     <div class="container">
       <div class="row valign-wrapper">
         <div class="col s12 m6">
-          <h1 class="hero-title">Hi, I'm <span class="blue-text text-darken-2">Andreafif Cyto Prasadana Sutrisno</span> 👋</h1>
-          <p class="flow-text grey-text text-darken-3">
+          <h1 class="hero-title"><span data-i18n="hero.hi">Hi, I'm</span> <span class="blue-text text-darken-2">Andreafif Cyto Prasadana Sutrisno</span> 👋</h1>
+          <p class="flow-text grey-text text-darken-3" data-i18n="hero.pitch">
             Membangun aplikasi Android & backend sejak 2018, berfokus pada UI/UX yang intuitif, arsitektur solid, dan integrasi data real-time untuk mendukung kebutuhan bisnis skala besar.
           </p>
           <div class="hero-cta">
-            <a href="#projects" class="btn-large blue waves-effect waves-light">
-              <i class="material-icons left">work</i>Lihat Projects
-            </a>
-            <a href="#contact" class="btn-large blue waves-effect waves-light">
-              <i class="material-icons left">mail</i>Kontak
-            </a>
-            <a
-              id="btn-download-cv"
-              class="btn-large blue waves-effect waves-light"
-              href="https://docs.google.com/document/d/1LV61tOvi8_LSL7fom3hlyUVSM348SWBMf6ScDdkh4QQ/export?format=pdf"
-              target="_blank" rel="noopener"
-            >
-              <i class="material-icons left">file_download</i>CV
+            <a href="#projects" class="btn-large blue waves-effect waves-light" id="cta-projects"><i class="material-icons left">work</i><span data-i18n="cta.projects">Lihat Projects</span></a>
+            <a href="#contact" class="btn-large blue waves-effect waves-light" id="cta-contact"><i class="material-icons left">mail</i><span data-i18n="cta.contact">Kontak</span></a>
+            <a id="btn-download-cv" class="btn-large blue waves-effect waves-light" href="https://docs.google.com/document/d/1LV61tOvi8_LSL7fom3hlyUVSM348SWBMf6ScDdkh4QQ/export?format=pdf" target="_blank" rel="noopener">
+              <i class="material-icons left">file_download</i><span data-i18n="cta.cv">CV</span>
             </a>
           </div>
         </div>
@@ -93,15 +68,14 @@
     <div class="container">
       <div class="row">
         <div class="col s12">
-          <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">person</i>About</h3>
-          <p class="grey-text text-darken-3">
-            Tulis ringkasan singkat tentang pengalamanmu, industri yang kamu geluti (FMCG, CV, Android, dsb),
-            dan value yang kamu tawarkan. Buat 3–4 kalimat yang kuat.
+          <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">person</i><span data-i18n="about.title">About</span></h3>
+          <p class="grey-text text-darken-3" data-i18n="about.lead">
+            Tulis ringkasan singkat tentang pengalamanmu, industri yang kamu geluti (FMCG, CV, Android, dsb), dan value yang kamu tawarkan. Buat 3–4 kalimat yang kuat.
           </p>
           <ul class="collection z-depth-1">
-            <li class="collection-item">🏆 Highlight 1 — hasil terukur (contoh: “Turunkan WAPE 22%”)</li>
-            <li class="collection-item">🚀 Highlight 2 — performa / skalabilitas</li>
-            <li class="collection-item">🤝 Highlight 3 — kolaborasi dengan klien besar</li>
+            <li class="collection-item" data-i18n="about.h1">🏆 Highlight 1 — hasil terukur (contoh: “Turunkan WAPE 22%”)</li>
+            <li class="collection-item" data-i18n="about.h2">🚀 Highlight 2 — performa / skalabilitas</li>
+            <li class="collection-item" data-i18n="about.h3">🤝 Highlight 3 — kolaborasi dengan klien besar</li>
           </ul>
         </div>
       </div>
@@ -111,57 +85,53 @@
   <!-- Projects -->
   <section id="projects" class="section blue lighten-5">
     <div class="container">
-      <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">apps</i>Projects</h3>
+      <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">apps</i><span data-i18n="projects.title">Projects</span></h3>
       <div class="row" id="project-grid">
-        <!-- Project Card Template (duplicate & edit) -->
+        <!-- Card 1 -->
         <div class="col s12 m6 l4">
           <div class="card hoverable">
             <div class="card-image waves-effect waves-block waves-light">
               <img class="activator" src="assets/img/placeholder.png" alt="Project Image">
             </div>
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">
-                People Counting<span class="right"><i class="material-icons">more_vert</i></span>
-              </span>
-              <p><a href="#" target="_blank">Demo / Repo</a></p>
+              <span class="card-title activator grey-text text-darken-4"><span data-i18n="proj1.title">People Counting</span><span class="right"><i class="material-icons">more_vert</i></span></span>
+              <p><a href="#" target="_blank" data-i18n="proj.demo">Demo / Repo</a></p>
               <div class="chip blue white-text">CV</div>
               <div class="chip blue white-text">Edge</div>
             </div>
             <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">People Counting<i class="material-icons right">close</i></span>
-              <p>Sistem counting di toko ritel untuk traffic, heatmap, dan journey analytics. Akurasi tinggi dan realtime.</p>
+              <span class="card-title grey-text text-darken-4"><span data-i18n="proj1.title">People Counting</span><i class="material-icons right">close</i></span>
+              <p data-i18n="proj1.desc">Sistem counting di toko ritel untuk traffic, heatmap, dan journey analytics. Akurasi tinggi dan realtime.</p>
             </div>
           </div>
         </div>
-
+        <!-- Card 2 -->
         <div class="col s12 m6 l4">
           <div class="card hoverable">
             <div class="card-image">
               <img class="activator" src="assets/img/placeholder.png" alt="Project Image">
             </div>
             <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4">
-                Merchandiser App<span class="right"><i class="material-icons">more_vert</i></span>
-              </span>
-              <p><a href="#" target="_blank">Case Study</a></p>
+              <span class="card-title activator grey-text text-darken-4"><span data-i18n="proj2.title">Merchandiser App</span><span class="right"><i class="material-icons">more_vert</i></span></span>
+              <p><a href="#" target="_blank" data-i18n="proj.case">Case Study</a></p>
               <div class="chip blue white-text">Android</div>
               <div class="chip blue white-text">Offline-first</div>
             </div>
             <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Merchandiser App<i class="material-icons right">close</i></span>
-              <p>Sistem Merchandise dengan Akurasi tinggi dan realtime.</p>
+              <span class="card-title grey-text text-darken-4"><span data-i18n="proj2.title">Merchandiser App</span><i class="material-icons right">close</i></span>
+              <p data-i18n="proj2.desc">Sistem Merchandise dengan Akurasi tinggi dan realtime.</p>
             </div>
           </div>
         </div>
-
+        <!-- Card 3 -->
         <div class="col s12 m6 l4">
           <div class="card hoverable">
             <div class="card-image">
               <img src="assets/img/placeholder.png" alt="Project Image">
             </div>
             <div class="card-content">
-              <span class="card-title">Forecast Dashboard</span>
-              <p><a href="#" target="_blank">Live Demo</a></p>
+              <span class="card-title" data-i18n="proj3.title">Forecast Dashboard</span>
+              <p><a href="#" target="_blank" data-i18n="proj.live">Live Demo</a></p>
               <div class="chip blue white-text">Analytics</div>
               <div class="chip blue white-text">Timeseries</div>
             </div>
@@ -175,7 +145,7 @@
   <!-- Skills -->
   <section id="skills" class="section white">
     <div class="container">
-      <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">build</i>Skills</h3>
+      <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">build</i><span data-i18n="skills.title">Skills</span></h3>
       <div class="row">
         <div class="col s12">
           <div class="chips-container">
@@ -193,19 +163,17 @@
   <!-- Contact -->
   <section id="contact" class="section blue lighten-5">
     <div class="container">
-      <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">mail</i>Contact</h3>
+      <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">mail</i><span data-i18n="contact.title">Contact</span></h3>
       <div class="row">
         <div class="col s12 m8">
           <div class="card">
             <div class="card-content">
-              <span class="card-title">Ayo diskusi 👇</span>
-              <p>Kirim email langsung ke saya:</p>
-                <a class="btn white waves-effect"
-                   href="https://mail.google.com/mail/?view=cm&fs=1&to=andre.afif35@gmail.com&su=Kerja%20Sama%20%E2%80%94%20Portfolio"
-                   target="_blank" rel="noopener">
-                  <i class="material-icons left">send</i>Email Saya
-                </a>
-              <p class="grey-text" style="margin-top: 12px">Atau DM: <a href="https://www.linkedin.com/in/andreafif-cyto-prasadana-sutrisno-861169199" target="_blank">LinkedIn</a> • <a href="https://github.com/gynkoz" target="_blank">GitHub</a></p>
+              <span class="card-title" data-i18n="contact.head">Ayo diskusi 👇</span>
+              <p data-i18n="contact.desc">Kirim email langsung ke saya:</p>
+              <a class="btn white waves-effect" href="https://mail.google.com/mail/?view=cm&fs=1&to=andre.afif35@gmail.com&su=Kerja%20Sama%20%E2%80%94%20Portfolio" target="_blank" rel="noopener">
+                <i class="material-icons left">send</i><span data-i18n="contact.email">Email Saya</span>
+              </a>
+              <p class="grey-text" style="margin-top: 12px"><span data-i18n="contact.dm">Atau DM:</span> <a href="https://www.linkedin.com/in/andreafif-cyto-prasadana-sutrisno-861169199" target="_blank">LinkedIn</a> • <a href="https://github.com/gynkoz" target="_blank">GitHub</a></p>
             </div>
           </div>
         </div>
@@ -222,14 +190,124 @@
 
   <footer class="page-footer blue">
     <div class="container">
-      © <span id="year"></span> Andreafif Cyto Prasadana Sutrisno — All rights reserved.
-      <a class="grey-text text-lighten-4 right" href="#home">Back to top</a>
+      © <span id="year"></span> Andreafif Cyto Prasadana Sutrisno — <span data-i18n="footer.rights">All rights reserved.</span>
+      <a class="grey-text text-lighten-4 right" href="#home" data-i18n="footer.top">Back to top</a>
     </div>
   </footer>
 
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    // Initialize Materialize (if you use sidenav, etc.)
+    document.addEventListener('DOMContentLoaded', function(){
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    });
+  </script>
+
+  <!-- i18n + Auto Detect Region (ID timezones -> id, else en) -->
+  <script>
+    const DICT = {
+      en: {
+        'label.indonesian': 'Indonesia',
+        'label.english': 'English',
+        'hero.hi': "Hi, I'm",
+        'hero.pitch': 'Building Android & backend apps since 2018, focusing on intuitive UI/UX, solid architecture, and real-time data integration to support large-scale business needs.',
+        'cta.projects': 'View Projects',
+        'cta.contact': 'Contact',
+        'cta.cv': 'CV',
+        'about.title': 'About',
+        'about.lead': 'Write a short summary about your experience, the industries you work in (FMCG, CV, Android, etc.), and the value you provide. Aim for 3–4 strong sentences.',
+        'about.h1': '🏆 Highlight 1 — measurable outcome (e.g., “Reduced WAPE by 22%”)',
+        'about.h2': '🚀 Highlight 2 — performance / scalability',
+        'about.h3': '🤝 Highlight 3 — collaboration with major clients',
+        'projects.title': 'Projects',
+        'proj.demo': 'Demo / Repo',
+        'proj.case': 'Case Study',
+        'proj.live': 'Live Demo',
+        'proj1.title': 'People Counting',
+        'proj1.desc': 'In-store counting for traffic, heatmap, and journey analytics. High accuracy and real-time.',
+        'proj2.title': 'Merchandiser App',
+        'proj2.desc': 'Merchandising system with high accuracy and real-time features.',
+        'proj3.title': 'Forecast Dashboard',
+        'skills.title': 'Skills',
+        'contact.title': 'Contact',
+        'contact.head': "Let's talk 👇",
+        'contact.desc': 'Send me an email directly:',
+        'contact.email': 'Email Me',
+        'contact.dm': 'Or DM:',
+        'footer.rights': 'All rights reserved.',
+        'footer.top': 'Back to top'
+      },
+      id: {
+        'label.indonesian': 'Indonesia',
+        'label.english': 'Inggris',
+        'hero.hi': 'Hi, saya',
+        'hero.pitch': 'Membangun aplikasi Android & backend sejak 2018, berfokus pada UI/UX yang intuitif, arsitektur solid, dan integrasi data real-time untuk mendukung kebutuhan bisnis skala besar.',
+        'cta.projects': 'Lihat Projects',
+        'cta.contact': 'Kontak',
+        'cta.cv': 'CV',
+        'about.title': 'About',
+        'about.lead': 'Tulis ringkasan singkat tentang pengalamanmu, industri yang kamu geluti (FMCG, CV, Android, dsb), dan value yang kamu tawarkan. Buat 3–4 kalimat yang kuat.',
+        'about.h1': '🏆 Highlight 1 — hasil terukur (contoh: “Turunkan WAPE 22%”)',
+        'about.h2': '🚀 Highlight 2 — performa / skalabilitas',
+        'about.h3': '🤝 Highlight 3 — kolaborasi dengan klien besar',
+        'projects.title': 'Projects',
+        'proj.demo': 'Demo / Repo',
+        'proj.case': 'Studi Kasus',
+        'proj.live': 'Live Demo',
+        'proj1.title': 'People Counting',
+        'proj1.desc': 'Sistem counting di toko ritel untuk traffic, heatmap, dan journey analytics. Akurasi tinggi dan realtime.',
+        'proj2.title': 'Merchandiser App',
+        'proj2.desc': 'Sistem Merchandise dengan Akurasi tinggi dan realtime.',
+        'proj3.title': 'Forecast Dashboard',
+        'skills.title': 'Skills',
+        'contact.title': 'Contact',
+        'contact.head': 'Ayo diskusi 👇',
+        'contact.desc': 'Kirim email langsung ke saya:',
+        'contact.email': 'Email Saya',
+        'contact.dm': 'Atau DM:',
+        'footer.rights': 'All rights reserved.',
+        'footer.top': 'Kembali ke atas'
+      }
+    };
+
+    const ID_TIMEZONES = new Set(['Asia/Jakarta','Asia/Makassar','Asia/Jayapura']);
+
+    function detectDefaultLang(){
+      const saved = localStorage.getItem('lang');
+      if (saved && (saved in DICT)) return saved;
+      try{
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        if (ID_TIMEZONES.has(tz)) return 'id';
+      }catch(e){}
+      const nav = (navigator.language || 'en').toLowerCase();
+      if (nav.startsWith('id')) return 'id';
+      return 'en';
+    }
+
+    function applyLang(lang){
+      const dict = DICT[lang] || DICT.en;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        const val = dict[key];
+        if (typeof val === 'string') el.textContent = val;
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn=>{
+        btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
+      });
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+    }
+
+    document.getElementById('btn-id').addEventListener('click', ()=>applyLang('id'));
+    document.getElementById('btn-en').addEventListener('click', ()=>applyLang('en'));
+
+    // Init
+    applyLang(detectDefaultLang());
+  </script>
+
   <script src="assets/js/main.js"></script>
 </body>
 </html>
