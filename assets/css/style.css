@@ -44,10 +44,10 @@ body{
 .hero{ background: var(--m3-surface); }
 .hero-title{ font-weight:900; line-height:1.1; letter-spacing:-.4px; }
 .hero-cta .btn-large{ margin-right:12px; margin-top:12px; border-radius: var(--rad-m); box-shadow: var(--elev-1); }
-.hero-img{
-  max-height: 340px; border-radius: var(--rad-l);
-  box-shadow: var(--elev-2);
-}
+/*.hero-img{*/
+/*  max-height: 340px; border-radius: var(--rad-l);*/
+/*  box-shadow: var(--elev-2);*/
+/*}*/
 
 /* Buttons → M3 look */
 .btn, .btn-large, .btn-small{
