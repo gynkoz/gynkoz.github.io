@@ -180,43 +180,41 @@ a.btn, a.btn-large, a.btn-small{ color: var(--m3-on-primary) !important; }
 /*.level { font-weight: 700; font-size: .75rem; opacity: .9; padding: 2px 6px; border-radius: 8px; background: rgba(0,0,0,.08); }*/
 
 
-/* ===== Skills: 2-column summary ===== */
-.skills-two-col { margin-top: 12px; }
+/* ===== Skill Kits (card gaya kanan, per kategori) ===== */
+.skill-kits {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    gap: 18px;
+}
+@media (max-width: 992px){ .skill-kits { grid-template-columns: 1fr; } }
 
-.summary-card {
+.kit-card {
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    background: #fff;
+    padding: 16px 18px;
+    border: 1px solid #eaeaea;
 }
 
-.summary-title { margin: 0 0 6px; font-weight: 700; }
-
-.summary-lead { margin: 0 0 12px; color: #607d8b; }
-
-/* pakai chip statistik yang sudah ada */
-.summary-stats { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-.summary-stats .chip { margin: 0; font-weight: 700; }
-
-.logo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(90px, 1fr));
-    gap: 10px;
+.kit-title {
+    display: flex; align-items: center; gap: 8px;
+    margin: 0 0 8px; font-weight: 800; font-size: 1.25rem;
+    color: #1e88e5;
 }
+.kit-sub { margin: 0 0 12px; color: #607d8b; }
 
-.logo-pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 10px 12px; border-radius: 999px; font-weight: 600;
-    border: 1px solid #e0e0e0; background: #fff;
+.kit-chips { display:flex; flex-wrap:wrap; gap:10px; }
+.kit-chip {
+    display:inline-flex; align-items:center; gap:8px;
+    padding:10px 14px; border-radius:999px; font-weight:700;
+    border:1px solid #e0e0e0; background:#f7f9fc; color:#27496d;
 }
-.logo-pill i { font-size: 18px; }
+.kit-chip i { font-size:18px; }
 
-/* varian warna ringan untuk logo pill */
-.lp-blue   { background: #e3f2fd; color: #0d47a1; border-color: #bbdefb; }
-.lp-green  { background: #e8f5e9; color: #1b5e20; border-color: #c8e6c9; }
-.lp-purple { background: #ede7f6; color: #4527a0; border-color: #d1c4e9; }
-.lp-orange { background: #fff3e0; color: #e65100; border-color: #ffe0b2; }
-.lp-cyan   { background: #e0f7fa; color: #006064; border-color: #b2ebf2; }
-
-/* responsif: rapatkan di layar kecil */
-@media (max-width: 600px){
-    .logo-grid { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
-}
+/* warna varian ringan */
+.kc-green  { background:#e8f5e9; color:#1b5e20; border-color:#c8e6c9; }
+.kc-blue   { background:#e3f2fd; color:#0d47a1; border-color:#bbdefb; }
+.kc-cyan   { background:#e0f7fa; color:#006064; border-color:#b2ebf2; }
+.kc-orange { background:#fff3e0; color:#e65100; border-color:#ffe0b2; }
+.kc-purple { background:#ede7f6; color:#4527a0; border-color:#d1c4e9; }
+.kc-grey   { background:#eceff1; color:#37474f; border-color:#cfd8dc; }
