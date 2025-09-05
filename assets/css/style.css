@@ -218,3 +218,28 @@ a.btn, a.btn-large, a.btn-small{ color: var(--m3-on-primary) !important; }
 .kc-orange { background:#fff3e0; color:#e65100; border-color:#ffe0b2; }
 .kc-purple { background:#ede7f6; color:#4527a0; border-color:#d1c4e9; }
 .kc-grey   { background:#eceff1; color:#37474f; border-color:#cfd8dc; }
+
+
+
+.hero-img-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-img-wrap::before {
+    content: "";
+    position: absolute;
+    top: -20px; left: -20px; right: -20px; bottom: -20px;
+    background: radial-gradient(circle at 30% 30%, #42a5f5 0%, #bbdefb 100%);
+    border-radius: 50%;
+    z-index: 0;
+    filter: blur(40px);
+}
+
+.hero-img {
+    position: relative;
+    z-index: 1;
+    border-radius: 20px;
+    max-height: 340px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.12);
+}
