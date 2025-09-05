@@ -221,25 +221,35 @@ a.btn, a.btn-large, a.btn-small{ color: var(--m3-on-primary) !important; }
 
 
 
-.hero-img-wrap {
-    position: relative;
-    display: inline-block;
-}
+/*.hero-img-wrap {*/
+/*    position: relative;*/
+/*    display: inline-block;*/
+/*}*/
 
-.hero-img-wrap::before {
-    content: "";
-    position: absolute;
-    top: -20px; left: -20px; right: -20px; bottom: -20px;
-    background: radial-gradient(circle at 30% 30%, #42a5f5 0%, #bbdefb 100%);
-    border-radius: 50%;
-    z-index: 0;
-    filter: blur(40px);
-}
+/*.hero-img-wrap::before {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    top: -20px; left: -20px; right: -20px; bottom: -20px;*/
+/*    background: radial-gradient(circle at 30% 30%, #42a5f5 0%, #bbdefb 100%);*/
+/*    border-radius: 50%;*/
+/*    z-index: 0;*/
+/*    filter: blur(40px);*/
+/*}*/
+
+/*.hero-img {*/
+/*    position: relative;*/
+/*    z-index: 1;*/
+/*    border-radius: 20px;*/
+/*    max-height: 340px;*/
+/*    box-shadow: 0 6px 20px rgba(0,0,0,.12);*/
+/*}*/
+
 
 .hero-img {
-    position: relative;
-    z-index: 1;
-    border-radius: 20px;
+    border-radius: 50%;
+    object-fit: cover;
     max-height: 340px;
-    box-shadow: 0 6px 20px rgba(0,0,0,.12);
+    padding: 6px;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(0,0,0,.12);
 }
