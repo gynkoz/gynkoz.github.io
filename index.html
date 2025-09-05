@@ -215,10 +215,10 @@
         'cta.contact': 'Contact',
         'cta.cv': 'CV',
         'about.title': 'About',
-        'about.lead': 'Write a short summary about your experience, the industries you work in (FMCG, CV, Android, etc.), and the value you provide. Aim for 3–4 strong sentences.',
-        'about.h1': '🏆 Highlight 1 — measurable outcome (e.g., “Reduced WAPE by 22%”)',
-        'about.h2': '🚀 Highlight 2 — performance / scalability',
-        'about.h3': '🤝 Highlight 3 — collaboration with major clients',
+        'about.lead': 'I’m an Android & Backend Developer passionate about turning complex ideas into fast, secure, and user-friendly applications. With 7+ years of experience in FMCG, analytics, and mobile systems, I combine intuitive UI/UX design with scalable architecture to deliver real business impact. My mission is simple: to build technology that is practical, impactful, and reliable.',
+        "about.h1": "🏆 Efficiency Gains — Achieved up to 50% improvement in merchandiser efficiency, significantly reducing manual verification time.",
+        "about.h2": "🚀 Performance & Scalability — Designed offline-first, scalable, and real-time analytics applications supporting thousands of field users simultaneously, with strong focus on speed and data security.",
+        "about.h3": "🤝 Collaboration with Major Clients — Worked with leading national and multinational companies such as Unilever, Nestlé, Sari Roti, SGM, AQUA, Kanzler, Beiersdorf, L’Oréal, Godrej, Ajinomoto, Sunpride, Perfetti, Anchor, Sosro, ICI, NSF, and more."
         'projects.title': 'Projects',
         'proj.demo': 'Demo / Repo',
         'proj.case': 'Case Study',
@@ -246,10 +246,10 @@
         'cta.contact': 'Kontak',
         'cta.cv': 'CV',
         'about.title': 'About',
-        'about.lead': 'Tulis ringkasan singkat tentang pengalamanmu, industri yang kamu geluti (FMCG, CV, Android, dsb), dan value yang kamu tawarkan. Buat 3–4 kalimat yang kuat.',
-        'about.h1': '🏆 Highlight 1 — hasil terukur (contoh: “Turunkan WAPE 22%”)',
-        'about.h2': '🚀 Highlight 2 — performa / skalabilitas',
-        'about.h3': '🤝 Highlight 3 — kolaborasi dengan klien besar',
+        'about.lead': 'Saya adalah Android & Backend Developer yang senang mengubah ide kompleks menjadi aplikasi cepat, aman, dan mudah digunakan. Dengan lebih dari 7 tahun pengalaman di FMCG, analitik, dan sistem mobile, saya memadukan desain UI/UX yang intuitif dengan arsitektur yang scalable untuk menciptakan solusi nyata bagi bisnis. Misi saya sederhana: menghadirkan teknologi yang praktis, berdampak, dan bisa diandalkan.',
+        "about.h1": "🏆 Efisiensi Kerja — Meningkatkan efisiensi kerja merchandiser hingga 50%, sekaligus mengurangi waktu verifikasi manual secara signifikan.",
+        "about.h2": "🚀 Performa & Skalabilitas — Merancang aplikasi offline-first, scalable, dan analitik real-time yang mampu digunakan ribuan user secara bersamaan di lapangan, dengan fokus pada kecepatan dan keamanan data.",
+        "about.h3": "🤝 Kolaborasi dengan Klien Besar — Berpengalaman bekerja sama dengan perusahaan nasional & multinasional seperti Unilever, Nestlé, Sari Roti, SGM, AQUA, Kanzler, Beiersdorf, L’Oréal, Godrej, Ajinomoto, Sunpride, Perfetti, Anchor, Sosro, ICI, NSF, dan lainnya."
         'projects.title': 'Projects',
         'proj.demo': 'Demo / Repo',
         'proj.case': 'Studi Kasus',
@@ -298,29 +298,11 @@
       document.documentElement.lang = lang;
     }
 
-    // Theme toggle
-    function applyTheme(mode){
-      if (mode === 'dark'){
-      document.body.classList.add('dark');
-      localStorage.setItem('theme','dark');
-      document.getElementById('btn-theme').setAttribute('aria-pressed','true');
-      } else {
-      document.body.classList.remove('dark');
-      localStorage.setItem('theme','light');
-      document.getElementById('btn-theme').setAttribute('aria-pressed','false');
-      }
-    }
-
     document.getElementById('btn-id').addEventListener('click', ()=>applyLang('id'));
     document.getElementById('btn-en').addEventListener('click', ()=>applyLang('en'));
-    document.getElementById('btn-theme').addEventListener('click', ()=>{
-    const current = localStorage.getItem('theme') || 'light';
-    applyTheme(current === 'dark' ? 'light' : 'dark');
-    });
     
     // Init
     applyLang(detectDefaultLang());
-    applyTheme(localStorage.getItem('theme') || 'light');
   </script>
 
   <script src="assets/js/main.js"></script>
