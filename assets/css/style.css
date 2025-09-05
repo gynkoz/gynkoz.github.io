@@ -120,6 +120,7 @@ a.btn, a.btn-large, a.btn-small{ color: var(--m3-on-primary) !important; }
   .hero-img{ max-height: 220px; }
 }
 
+
 /* ABOUT — lead panel + stat chips + one-line highlights */
 .about-lead-panel{
     border-left:4px solid #1e88e5;
@@ -152,4 +153,46 @@ a.btn, a.btn-large, a.btn-small{ color: var(--m3-on-primary) !important; }
 
 /* (opsional) sedikit mengecilkan font highlight */
 .collection.about-list .collection-item{ font-size:0.98rem; }
+
+
+
+/* ===== Skills ===== */
+.skills-wrap{display:grid;gap:18px;margin-top:10px}
+
+/* kategori judul */
+.skill-cat{display:flex;align-items:center;gap:8px;margin:6px 0 4px}
+.skill-cat .cat-icon{font-size:20px;color:#1e88e5}
+.skill-cat h5{margin:0;font-size:1.05rem;color:#1e88e5}
+
+/* chip gaya premium */
+.skill-chip{
+    --level: 100%;              /* 0%–100%: garis progres bawah */
+    display:inline-flex;align-items:center;gap:8px;
+    padding:8px 12px;border-radius:999px;
+    border:1px solid transparent;
+    font-weight:600;line-height:1; position:relative;
+    background:#e8f0fe;color:#1a73e8;  /* default biru muda */
+    margin:6px 8px 0 0;
+}
+.skill-chip i{font-size:18px;line-height:18px}
+.skill-chip::after{               /* progres tipis */
+    content:"";position:absolute;left:10px;right:10px;bottom:4px;height:3px;
+    border-radius:3px;background:currentColor;opacity:.25;
+    transform:scaleX(calc(var(--level) / 100));transform-origin:left;
+}
+
+/* varian warna per kategori */
+.chip-green   {background:#e8f5e9;color:#1b5e20;border-color:#c8e6c9}
+.chip-purple  {background:#ede7f6;color:#4527a0;border-color:#d1c4e9}
+.chip-orange  {background:#fff3e0;color:#e65100;border-color:#ffe0b2}
+.chip-cyan    {background:#e0f7fa;color:#006064;border-color:#b2ebf2}
+.chip-grey    {background:#eceff1;color:#37474f;border-color:#cfd8dc}
+
+/* highlight skill utama */
+.skill-chip.primary{box-shadow:0 0 0 2px rgba(30,136,229,.18)}
+/* badge level kecil */
+.level-badge{
+    font-size:.72rem;font-weight:700;padding:2px 6px;border-radius:8px;
+    background:rgba(0,0,0,.08); color:inherit
+}
 
