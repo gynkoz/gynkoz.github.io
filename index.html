@@ -22,22 +22,27 @@
 
   <style>
     /* === Language Toggle (top-right) === */
-    .lang-toggle{position:fixed; top:14px; right:14px; z-index:1000; display:flex; gap:8px; align-items:center; background:#fff; border-radius:999px; padding:4px; box-shadow:0 6px 18px rgba(0,0,0,.12)}
-    .lang-btn{border:none; background:transparent; border-radius:999px; padding:6px 10px; font-weight:600; cursor:pointer; color:#1565c0}
-    .lang-btn[aria-pressed="true"]{background:#e3f2fd; color:#0d47a1}
-    .lang-flag{font-size:16px; margin-right:6px}
-    @media(max-width:600px){ .lang-toggle{top:10px; right:10px; padding:3px} .lang-btn{padding:6px 8px} }
+    .toggle-bar{position:fixed; top:14px; right:14px; z-index:1000; display:flex; gap:8px; align-items:center; background:#fff; border-radius:999px; padding:4px; box-shadow:0 6px 18px rgba(0,0,0,.12)}
+    .toggle-btn{border:none; background:transparent; border-radius:999px; padding:6px 10px; font-weight:600; cursor:pointer; color:#1565c0; display:flex; align-items:center}
+    .toggle-btn[aria-pressed="true"]{background:#e3f2fd; color:#0d47a1}
+    .toggle-flag{font-size:16px; margin-right:6px}
+    @media(max-width:600px){ .toggle-bar{top:10px; right:10px; padding:3px} .toggle-btn{padding:6px 8px} }
+    
+    
+    body.dark{background:#121212; color:#e0e0e0}
+    body.dark .page-footer{background:#1e1e1e}
+    body.dark .card{background:#1f1f1f; color:#e0e0e0}
+    body.dark .collection .collection-item{background:#1f1f1f; color:#e0e0e0}
   </style>
 </head>
 <body class="blue lighten-5">
   <!-- Lang Toggle -->
   <div class="lang-toggle" role="group" aria-label="Language toggle">
-  <button class="lang-btn" id="btn-id" data-lang="id" aria-pressed="false" title="Bahasa Indonesia"><span class="lang-flag">🇮🇩</span><span data-i18n="label.indonesian">Indonesia</span></button>
-  <button class="lang-btn" id="btn-en" data-lang="en" aria-pressed="false" title="English"><span class="lang-flag">🌐</span><span data-i18n="label.english">English</span></button>
+    <button class="lang-btn" id="btn-id" data-lang="id" aria-pressed="false" title="Bahasa Indonesia"><span class="lang-flag">🇮🇩</span><span data-i18n="label.indonesian">Indonesia</span></button>
+    <button class="lang-btn" id="btn-en" data-lang="en" aria-pressed="false" title="English"><span class="lang-flag">🌐</span><span data-i18n="label.english">English</span></button>
+    <!-- Theme Toggle -->
+    <button class="toggle-btn" id="btn-theme" aria-pressed="false" title="Toggle Dark Mode"><i class="material-icons">brightness_6</i></button>
   </div>
-
-  <!-- Navbar (optional original is commented) -->
-  <!-- keep as-is -->
 
   <!-- Hero -->
   <section id="home" class="section hero blue lighten-4">
@@ -301,11 +306,29 @@
       document.documentElement.lang = lang;
     }
 
+    // Theme toggle
+    function applyTheme(mode){
+      if (mode === 'dark'){
+      document.body.classList.add('dark');
+      localStorage.setItem('theme','dark');
+      document.getElementById('btn-theme').setAttribute('aria-pressed','true');
+      } else {
+      document.body.classList.remove('dark');
+      localStorage.setItem('theme','light');
+      document.getElementById('btn-theme').setAttribute('aria-pressed','false');
+      }
+    }
+
     document.getElementById('btn-id').addEventListener('click', ()=>applyLang('id'));
     document.getElementById('btn-en').addEventListener('click', ()=>applyLang('en'));
-
+    document.getElementById('btn-theme').addEventListener('click', ()=>{
+    const current = localStorage.getItem('theme') || 'light';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+    
     // Init
     applyLang(detectDefaultLang());
+    applyTheme(localStorage.getItem('theme') || 'light');
   </script>
 
   <script src="assets/js/main.js"></script>
