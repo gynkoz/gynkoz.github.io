@@ -1,433 +1,461 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#2196F3">
-  <title>Portfolio — Andreafif Cyto Prasadana Sutrisno</title>
-  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="theme-color" content="#2196F3">
+    <title>Portfolio — Andreafif Cyto Prasadana Sutrisno</title>
+    <link rel="icon" type="image/png" href="assets/img/favicon.png"/>
 
-  <!-- Material Icons & Materialize CSS -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Material Icons & Materialize CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="assets/css/style.css"/>
 
-<!--  <meta name="description" content="Portofolio Material Design — tampilkan proyek, skill, dan kontak.">-->
-<!--  <meta property="og:title" content="Portfolio — Andreafif Cyto Prasadana Sutrisno">-->
-<!--  <meta property="og:description" content="Portofolio Material Design — tampilkan proyek, skill, dan kontak.">-->
-<!--  <meta property="og:type" content="website">-->
+    <style>
+        /* === Toggle Bar (Language) === */
+        .lang-toggle {
+            position: fixed;
+            top: 14px;
+            right: 14px;
+            z-index: 1000;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            background: #fff;
+            border-radius: 999px;
+            padding: 4px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .12)
+        }
 
-  <style>
-      /* === Toggle Bar (Language) === */
-    .lang-toggle{position:fixed; top:14px; right:14px; z-index:1000; display:flex; gap:8px; align-items:center; background:#fff; border-radius:999px; padding:4px; box-shadow:0 6px 18px rgba(0,0,0,.12)}
-    .lang-btn{border:none; background:transparent; border-radius:999px; padding:6px 10px; font-weight:600; cursor:pointer; color:#1565c0; display:flex; align-items:center}
-    .lang-btn[aria-pressed="true"]{background:#e3f2fd; color:#0d47a1}
-    .lang-flag{font-size:16px; margin-right:6px}
-    @media(max-width:600px){ .lang-toggle{top:10px; right:10px; padding:3px} .lang-btn{padding:6px 8px} }
-  </style>
+        .lang-btn {
+            border: none;
+            background: transparent;
+            border-radius: 999px;
+            padding: 6px 10px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #1565c0;
+            display: flex;
+            align-items: center
+        }
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Portfolio — Andreafif Cyto Prasadana Sutrisno">
-  <meta property="og:description" content="Android & Backend Developer — 7+ years of experience building mobile, backend, AI, and analytics apps.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://gynkoz.github.io/">
-  <meta property="og:image" content="https://gynkoz.github.io/assets/img/photo_no_bg.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="id_ID">
+        .lang-btn[aria-pressed="true"] {
+            background: #e3f2fd;
+            color: #0d47a1
+        }
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Portfolio — Andreafif Cyto Prasadana Sutrisno">
-  <meta name="twitter:description" content="Android & Backend Developer — 7+ years of experience building mobile, backend, AI, and analytics apps.">
-  <meta name="twitter:image" content="https://gynkoz.github.io/assets/img/photo_no_bg.png">
+        .lang-flag {
+            font-size: 16px;
+            margin-right: 6px
+        }
+
+        @media (max-width: 600px) {
+            .lang-toggle {
+                top: 10px;
+                right: 10px;
+                padding: 3px
+            }
+
+            .lang-btn {
+                padding: 6px 8px
+            }
+        }
+    </style>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Portfolio — Andreafif Cyto Prasadana Sutrisno">
+    <meta property="og:description"
+          content="Android & Backend Developer — 7+ years of experience building mobile, backend, AI, and analytics apps.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gynkoz.github.io/">
+    <meta property="og:image" content="https://gynkoz.github.io/assets/img/photo_no_bg.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="id_ID">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio — Andreafif Cyto Prasadana Sutrisno">
+    <meta name="twitter:description"
+          content="Android & Backend Developer — 7+ years of experience building mobile, backend, AI, and analytics apps.">
+    <meta name="twitter:image" content="https://gynkoz.github.io/assets/img/photo_no_bg.png">
 
 </head>
 <body class="blue lighten-5">
-  <!-- Lang Toggle -->
-  <div class="lang-toggle" role="group" aria-label="Language toggle">
-    <button class="lang-btn" id="btn-id" data-lang="id" aria-pressed="false" title="Bahasa Indonesia"><span class="lang-flag">🇮🇩</span><span data-i18n="label.indonesian">Indonesia</span></button>
-    <button class="lang-btn" id="btn-en" data-lang="en" aria-pressed="false" title="English"><span class="lang-flag">🌐</span><span data-i18n="label.english">English</span></button>
-  </div>
+<!-- Dot Navigation (kanan) -->
+<div class="dots-nav" aria-label="Section navigation">
+    <a href="#home" data-target="home" aria-label="Hero"></a>
+    <a href="#about" data-target="about" aria-label="About"></a>
+    <a href="#projects" data-target="projects" aria-label="Projects"></a>
+    <a href="#skills" data-target="skills" aria-label="Skills"></a>
+    <a href="#contact" data-target="contact" aria-label="Contact"></a>
+</div>
 
-  <!-- Hero -->
-  <section id="home" class="section hero blue lighten-4">
+<!-- Lang Toggle -->
+<div class="lang-toggle" role="group" aria-label="Language toggle">
+    <button class="lang-btn" id="btn-id" data-lang="id" aria-pressed="false" title="Bahasa Indonesia"><span
+            class="lang-flag">🇮🇩</span><span data-i18n="label.indonesian">Indonesia</span></button>
+    <button class="lang-btn" id="btn-en" data-lang="en" aria-pressed="false" title="English"><span
+            class="lang-flag">🌐</span><span data-i18n="label.english">English</span></button>
+</div>
+
+<!-- Hero -->
+<section id="home" class="section hero blue lighten-4 snap-section reveal">
     <div class="container">
-      <div class="row valign-wrapper">
-        <div class="col s12 m6">
-          <h1 class="hero-title"><span data-i18n="hero.hi">Hi, I'm</span> <span class="blue-text text-darken-2">Andreafif Cyto Prasadana Sutrisno</span> 👋</h1>
-          <p class="flow-text grey-text text-darken-3" data-i18n="hero.pitch"></p>
-          <div class="hero-cta">
-            <a href="#projects" class="btn-large blue waves-effect waves-light" id="cta-projects"><i class="material-icons left">work</i><span data-i18n="cta.projects">Lihat Projects</span></a>
-            <a href="#contact" class="btn-large blue waves-effect waves-light" id="cta-contact"><i class="material-icons left">mail</i><span data-i18n="cta.contact">Kontak</span></a>
-            <a id="btn-download-cv" class="btn-large blue waves-effect waves-light" href="https://docs.google.com/document/d/1LV61tOvi8_LSL7fom3hlyUVSM348SWBMf6ScDdkh4QQ/export?format=pdf" target="_blank" rel="noopener">
-              <i class="material-icons left">file_download</i><span data-i18n="cta.cv">CV</span>
-            </a>
-          </div>
+        <div class="row valign-wrapper">
+            <div class="col s12 m6">
+                <h1 class="hero-title"><span data-i18n="hero.hi">Hi, I'm</span> <span class="blue-text text-darken-2">Andreafif Cyto Prasadana Sutrisno</span>
+                    👋</h1>
+                <p class="flow-text grey-text text-darken-3" data-i18n="hero.pitch"></p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn-large blue waves-effect waves-light" id="cta-projects"><i
+                            class="material-icons left">work</i><span data-i18n="cta.projects">Lihat Projects</span></a>
+                    <a href="#contact" class="btn-large blue waves-effect waves-light" id="cta-contact"><i
+                            class="material-icons left">mail</i><span data-i18n="cta.contact">Kontak</span></a>
+                    <a id="btn-download-cv" class="btn-large blue waves-effect waves-light"
+                       href="https://docs.google.com/document/d/1LV61tOvi8_LSL7fom3hlyUVSM348SWBMf6ScDdkh4QQ/export?format=pdf"
+                       target="_blank" rel="noopener">
+                        <i class="material-icons left">file_download</i><span data-i18n="cta.cv">CV</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-parallax">
+                <img src="assets/img/photo_no_bg.png" alt="Hero" class="hero-img z-depth-2 responsive-img">
+            </div>
         </div>
-        <div class="col s12 m6 center">
-          <img src="assets/img/photo_no_bg.png" alt="Hero" class="hero-img z-depth-2 responsive-img">
-        </div>
-      </div>
     </div>
-  </section>
 
-  <!-- About -->
-  <section id="about" class="section white">
-      <div class="container">
-          <div class="row">
-              <div class="col s12">
-                  <h3 class="section-title blue-text text-darken-2">
-                      <i class="material-icons left">person</i>
-                      <span data-i18n="about.title">About</span>
-                  </h3>
+    <!-- Scroll hint -->
+    <div class="scroll-hint" aria-hidden="true">
+        <span class="hint-text">Scroll ke bawah</span>
+        <i class="material-icons">keyboard_arrow_down</i>
+    </div>
 
-                  <!-- Lead panel (lebih “bernyawa”) -->
-                  <div class="about-lead-panel card-panel">
-                      <p class="grey-text text-darken-3" data-i18n="about.lead">
-                          Android & Backend Developer yang fokus pada UI/UX intuitif, arsitektur scalable, dan real-time data.
-                      </p>
-                  </div>
+</section>
 
-                  <!-- Stat chips (gimmick ringan) -->
-                  <div class="about-stats">
-                      <div class="chip chip-years" data-i18n ="stats.years"></div>
-                      <div class="chip chip-eff" data-i18n ="stats.efficiency"></div>
-                      <div class="chip chip-users" data-i18n ="stats.users"></div>
-                      <div class="chip chip-company" data-i18n ="stats.brands"></div>
-                  </div>
-
-                  <!-- Highlights (1 baris, auto-ellipsis) -->
-                  <ul class="collection z-depth-1 about-list">
-                      <li class="collection-item about-item">
-                          <span class="about-text" data-i18n="about.h1"></span>
-                      </li>
-                      <li class="collection-item about-item">
-                          <span class="about-text" data-i18n="about.h2"></span>
-                      </li>
-                      <li class="collection-item about-item">
-                          <span class="about-text" data-i18n="about.h3"></span>
-                      </li>
-                      <li class="collection-item about-item">
-                          <span class="about-text" data-i18n="about.h4"></span>
-                      </li>
-                      <li class="collection-item about-item">
-                          <span class="about-text" data-i18n="about.h5"></span>
-                      </li>
-                      <li class="collection-item about-item">
-                          <span class="about-text" data-i18n="about.h6"></span>
-                      </li>
-                  </ul>
-              </div>
-          </div>
-      </div>
-  </section>
-
-
-  <!-- Projects -->
-  <section id="projects" class="section blue lighten-5">
+<!-- About -->
+<section id="about" class="section white snap-section reveal">
     <div class="container">
-      <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">apps</i><span data-i18n="projects.title">Projects</span></h3>
-      <div class="row" id="project-grid">
-        <!-- Card 1 -->
-        <div class="col s12 m6 l4">
-          <div class="card hoverable">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="assets/img/placeholder.png" alt="Project Image">
-            </div>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4"><span data-i18n="proj1.title">People Counting</span><span class="right"><i class="material-icons">more_vert</i></span></span>
-              <p><a href="#" target="_blank" data-i18n="proj.demo">Demo / Repo</a></p>
-              <div class="chip blue white-text">CV</div>
-              <div class="chip blue white-text">Edge</div>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4"><span data-i18n="proj1.title">People Counting</span><i class="material-icons right">close</i></span>
-              <p data-i18n="proj1.desc">Sistem counting di toko ritel untuk traffic, heatmap, dan journey analytics. Akurasi tinggi dan realtime.</p>
-            </div>
-          </div>
-        </div>
-        <!-- Card 2 -->
-        <div class="col s12 m6 l4">
-          <div class="card hoverable">
-            <div class="card-image">
-              <img class="activator" src="assets/img/placeholder.png" alt="Project Image">
-            </div>
-            <div class="card-content">
-              <span class="card-title activator grey-text text-darken-4"><span data-i18n="proj2.title">Merchandiser App</span><span class="right"><i class="material-icons">more_vert</i></span></span>
-              <p><a href="#" target="_blank" data-i18n="proj.case">Case Study</a></p>
-              <div class="chip blue white-text">Android</div>
-              <div class="chip blue white-text">Offline-first</div>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4"><span data-i18n="proj2.title">Merchandiser App</span><i class="material-icons right">close</i></span>
-              <p data-i18n="proj2.desc">Sistem Merchandise dengan Akurasi tinggi dan realtime.</p>
-            </div>
-          </div>
-        </div>
-        <!-- Card 3 -->
-        <div class="col s12 m6 l4">
-          <div class="card hoverable">
-            <div class="card-image">
-              <img src="assets/img/placeholder.png" alt="Project Image">
-            </div>
-            <div class="card-content">
-              <span class="card-title" data-i18n="proj3.title">Forecast Dashboard</span>
-              <p><a href="#" target="_blank" data-i18n="proj.live">Live Demo</a></p>
-              <div class="chip blue white-text">Analytics</div>
-              <div class="chip blue white-text">Timeseries</div>
-            </div>
-          </div>
-        </div>
+        <div class="row">
+            <div class="col s12">
+                <h3 class="section-title blue-text text-darken-2">
+                    <i class="material-icons left">person</i>
+                    <span data-i18n="about.title">About</span>
+                </h3>
 
-      </div>
+                <!-- Lead panel (lebih “bernyawa”) -->
+                <div class="about-lead-panel card-panel">
+                    <p class="grey-text text-darken-3" data-i18n="about.lead">
+                        Android & Backend Developer yang fokus pada UI/UX intuitif, arsitektur scalable, dan real-time
+                        data.
+                    </p>
+                </div>
+
+                <!-- Stat chips (gimmick ringan) -->
+                <div class="about-stats">
+                    <div class="chip chip-years" data-i18n="stats.years"></div>
+                    <div class="chip chip-eff" data-i18n="stats.efficiency"></div>
+                    <div class="chip chip-users" data-i18n="stats.users"></div>
+                    <div class="chip chip-company" data-i18n="stats.brands"></div>
+                </div>
+
+                <!-- Highlights (1 baris, auto-ellipsis) -->
+                <ul class="collection z-depth-1 about-list">
+                    <li class="collection-item about-item">
+                        <span class="about-text" data-i18n="about.h1"></span>
+                    </li>
+                    <li class="collection-item about-item">
+                        <span class="about-text" data-i18n="about.h2"></span>
+                    </li>
+                    <li class="collection-item about-item">
+                        <span class="about-text" data-i18n="about.h3"></span>
+                    </li>
+                    <li class="collection-item about-item">
+                        <span class="about-text" data-i18n="about.h4"></span>
+                    </li>
+                    <li class="collection-item about-item">
+                        <span class="about-text" data-i18n="about.h5"></span>
+                    </li>
+                    <li class="collection-item about-item">
+                        <span class="about-text" data-i18n="about.h6"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </section>
-
-  <section id="skills" class="section white">
-      <div class="container">
-          <h3 class="section-title blue-text text-darken-2">
-              <i class="material-icons left">build</i>
-              <span data-i18n="skills.title">Skills</span>
-          </h3>
-
-          <!-- Skill Kits Cards -->
-          <div class="skill-kits">
-              <!-- Mobile -->
-              <div class="kit-card">
-                  <h5 class="kit-title"><i class="material-icons">smartphone</i><span data-i18n="kit.mobile">Mobile</span></h5>
-                  <p class="kit-sub" data-i18n="kit.mobile.sub">Core mobile stack for modern Android apps.</p>
-                  <div class="kit-chips">
-                      <span class="kit-chip kc-blue"><i class="material-icons">android</i>Android (Kotlin/Java)</span>
-                      <span class="kit-chip kc-green"><i class="material-icons">palette</i>Jetpack Compose</span>
-                      <span class="kit-chip kc-grey"><i class="material-icons">view_quilt</i>Material/Design System</span>
-                  </div>
-              </div>
-
-              <!-- Backend -->
-              <div class="kit-card">
-                  <h5 class="kit-title"><i class="material-icons">settings</i><span data-i18n="kit.backend">Backend</span></h5>
-                  <p class="kit-sub" data-i18n="kit.backend.sub">APIs that are reliable, secure, and scalable.</p>
-                  <div class="kit-chips">
-                      <span class="kit-chip kc-cyan"><i class="material-icons">memory</i>Node.js / Express</span>
-                      <span class="kit-chip kc-grey"><i class="material-icons">code</i>PHP</span>
-                      <span class="kit-chip kc-blue"><i class="material-icons">security</i>Auth/JWT</span>
-                  </div>
-              </div>
-
-              <!-- Database -->
-              <div class="kit-card">
-                  <h5 class="kit-title"><i class="material-icons">dns</i><span data-i18n="kit.db">Database</span></h5>
-                  <p class="kit-sub" data-i18n="kit.db.sub">Reliable databases for analytics & apps.</p>
-                  <div class="kit-chips">
-                      <span class="kit-chip kc-orange"><i class="material-icons">table_chart</i>MySQL</span>
-                      <span class="kit-chip kc-purple"><i class="material-icons">storage</i>PostgreSQL</span>
-                      <span class="kit-chip kc-grey"><i class="material-icons">insert_drive_file</i>SQLite</span>
-                  </div>
-              </div>
-
-              <!-- AI / Computer Vision -->
-              <div class="kit-card">
-                  <h5 class="kit-title"><i class="material-icons">psychology</i><span data-i18n="kit.ai">AI / Computer Vision</span></h5>
-                  <p class="kit-sub" data-i18n="kit.ai.sub">Practical AI on-device & at the edge.</p>
-                  <div class="kit-chips">
-                      <span class="kit-chip kc-purple"><i class="material-icons">precision_manufacturing</i>TFLite</span>
-                      <span class="kit-chip kc-blue"><i class="material-icons">speed</i>Realtime/Edge</span>
-                  </div>
-              </div>
-
-              <!-- UI / UX -->
-              <div class="kit-card">
-                  <h5 class="kit-title"><i class="material-icons">brush</i><span data-i18n="kit.uiux">UI / UX</span></h5>
-                  <p class="kit-sub" data-i18n="kit.uiux.sub">Usability-first with clean, consistent interfaces.</p>
-                  <div class="kit-chips">
-                      <span class="kit-chip kc-orange"><i class="material-icons">view_quilt</i>Design Systems</span>
-                      <span class="kit-chip kc-orange"><i class="material-icons">gesture</i>Prototyping</span>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
+</section>
 
 
-  <!-- Contact -->
-  <section id="contact" class="section blue lighten-5">
+<!-- Projects -->
+<section id="projects" class="section blue lighten-5 snap-section reveal">
     <div class="container">
-      <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">mail</i><span data-i18n="contact.title">Contact</span></h3>
-      <div class="row">
-        <div class="col s12 m8">
-          <div class="card">
-            <div class="card-content">
-              <span class="card-title" data-i18n="contact.head">Ayo diskusi 👇</span>
-              <p data-i18n="contact.desc">Kirim email langsung ke saya:</p>
-              <a class="btn white waves-effect" href="https://mail.google.com/mail/?view=cm&fs=1&to=andre.afif35@gmail.com&su=Kerja%20Sama%20%E2%80%94%20Portfolio" target="_blank" rel="noopener">
-                <i class="material-icons left">send</i><span data-i18n="contact.email">Email Saya</span>
-              </a>
-              <p class="grey-text" style="margin-top: 12px"><span data-i18n="contact.dm">Atau DM:</span> <a href="https://www.linkedin.com/in/andreafif-cyto-prasadana-sutrisno-861169199" target="_blank">LinkedIn</a> • <a href="https://github.com/gynkoz" target="_blank">GitHub</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <ul class="collection">
-            <li class="collection-item"><i class="material-icons left">location_on</i>Jakarta, ID</li>
-            <li class="collection-item"><i class="material-icons left">language</i>gynkoz.github.io</li>
-            <li class="collection-item"><i class="material-icons left">phone</i>+62-896-5602-0356</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+        <h3 class="section-title blue-text text-darken-2">
+            <i class="material-icons left">apps</i>
+            <span data-i18n="projects.title">Projects</span>
+        </h3>
 
-  <footer class="page-footer blue">
+
+        <!-- grid akan di-render via JS -->
+        <div id="project-grid" class="project-strip"></div>
+    </div>
+</section>
+
+<section id="skills" class="section white snap-section reveal">
     <div class="container">
-      © <span id="year"></span> Andreafif Cyto Prasadana Sutrisno — <span data-i18n="footer.rights">All rights reserved.</span>
-      <a class="grey-text text-lighten-4 right" href="#home" data-i18n="footer.top">Back to top</a>
-    </div>
-  </footer>
+        <h3 class="section-title blue-text text-darken-2">
+            <i class="material-icons left">build</i>
+            <span data-i18n="skills.title">Skills</span>
+        </h3>
 
-  <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script>
+        <!-- Skill Kits Cards -->
+        <div class="skill-kits">
+            <!-- Mobile -->
+            <div class="kit-card">
+                <h5 class="kit-title"><i class="material-icons">smartphone</i><span data-i18n="kit.mobile">Mobile</span>
+                </h5>
+                <p class="kit-sub" data-i18n="kit.mobile.sub">Core mobile stack for modern Android apps.</p>
+                <div class="kit-chips">
+                    <span class="kit-chip kc-blue"><i class="material-icons">android</i>Android (Kotlin/Java)</span>
+                    <span class="kit-chip kc-green"><i class="material-icons">palette</i>Jetpack Compose</span>
+                    <span class="kit-chip kc-grey"><i class="material-icons">view_quilt</i>Material/Design System</span>
+                </div>
+            </div>
+
+            <!-- Backend -->
+            <div class="kit-card">
+                <h5 class="kit-title"><i class="material-icons">settings</i><span data-i18n="kit.backend">Backend</span>
+                </h5>
+                <p class="kit-sub" data-i18n="kit.backend.sub">APIs that are reliable, secure, and scalable.</p>
+                <div class="kit-chips">
+                    <span class="kit-chip kc-cyan"><i class="material-icons">memory</i>Node.js / Express</span>
+                    <span class="kit-chip kc-grey"><i class="material-icons">code</i>PHP</span>
+                    <span class="kit-chip kc-blue"><i class="material-icons">security</i>Auth/JWT</span>
+                </div>
+            </div>
+
+            <!-- Database -->
+            <div class="kit-card">
+                <h5 class="kit-title"><i class="material-icons">dns</i><span data-i18n="kit.db">Database</span></h5>
+                <p class="kit-sub" data-i18n="kit.db.sub">Reliable databases for analytics & apps.</p>
+                <div class="kit-chips">
+                    <span class="kit-chip kc-orange"><i class="material-icons">table_chart</i>MySQL</span>
+                    <span class="kit-chip kc-purple"><i class="material-icons">storage</i>PostgreSQL</span>
+                    <span class="kit-chip kc-grey"><i class="material-icons">insert_drive_file</i>SQLite</span>
+                </div>
+            </div>
+
+            <!-- AI / Computer Vision -->
+            <div class="kit-card">
+                <h5 class="kit-title"><i class="material-icons">psychology</i><span data-i18n="kit.ai">AI / Computer Vision</span>
+                </h5>
+                <p class="kit-sub" data-i18n="kit.ai.sub">Practical AI on-device & at the edge.</p>
+                <div class="kit-chips">
+                    <span class="kit-chip kc-purple"><i class="material-icons">precision_manufacturing</i>TFLite</span>
+                    <span class="kit-chip kc-blue"><i class="material-icons">speed</i>Realtime/Edge</span>
+                </div>
+            </div>
+
+            <!-- UI / UX -->
+            <div class="kit-card">
+                <h5 class="kit-title"><i class="material-icons">brush</i><span data-i18n="kit.uiux">UI / UX</span></h5>
+                <p class="kit-sub" data-i18n="kit.uiux.sub">Usability-first with clean, consistent interfaces.</p>
+                <div class="kit-chips">
+                    <span class="kit-chip kc-orange"><i class="material-icons">view_quilt</i>Design Systems</span>
+                    <span class="kit-chip kc-orange"><i class="material-icons">gesture</i>Prototyping</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Contact -->
+<section id="contact" class="section blue lighten-5 snap-section reveal">
+    <div class="container">
+        <h3 class="section-title blue-text text-darken-2"><i class="material-icons left">mail</i><span
+                data-i18n="contact.title">Contact</span></h3>
+        <div class="row">
+            <div class="col s12 m8">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title" data-i18n="contact.head">Ayo diskusi 👇</span>
+                        <p data-i18n="contact.desc">Kirim email langsung ke saya:</p>
+                        <a class="btn white waves-effect"
+                           href="https://mail.google.com/mail/?view=cm&fs=1&to=andre.afif35@gmail.com&su=Kerja%20Sama%20%E2%80%94%20Portfolio"
+                           target="_blank" rel="noopener">
+                            <i class="material-icons left">send</i><span data-i18n="contact.email">Email Saya</span>
+                        </a>
+                        <p class="grey-text" style="margin-top: 12px"><span data-i18n="contact.dm">Atau DM:</span> <a
+                                href="https://www.linkedin.com/in/andreafif-cyto-prasadana-sutrisno-861169199"
+                                target="_blank">LinkedIn</a> • <a href="https://github.com/gynkoz" target="_blank">GitHub</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <ul class="collection">
+                    <li class="collection-item"><i class="material-icons left">location_on</i>Jakarta, ID</li>
+                    <li class="collection-item"><i class="material-icons left">language</i>gynkoz.github.io</li>
+                    <li class="collection-item"><i class="material-icons left">phone</i>+62-896-5602-0356</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="page-footer blue">
+    <div class="container">
+        © <span id="year"></span> Andreafif Cyto Prasadana Sutrisno — <span data-i18n="footer.rights">All rights reserved.</span>
+        <a class="grey-text text-lighten-4 right" href="#home" data-i18n="footer.top">Back to top</a>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
     // Initialize Materialize (if you use sidenav, etc.)
-    document.addEventListener('DOMContentLoaded', function(){
-      const yearEl = document.getElementById('year');
-      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', function () {
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
     });
-  </script>
+</script>
 
-  <!-- i18n + Auto Detect Region (ID timezones -> id, else en) -->
-  <script>
+<!-- i18n + Auto Detect Region (ID timezones -> id, else en) -->
+<script>
     const DICT = {
-      en: {
-        'label.indonesian': 'Indonesia',
-        'label.english': 'English',
-        'hero.hi': "Hi, I'm",
-        'hero.pitch': 'Building Android & backend apps since 2018, focusing on intuitive UI/UX, solid architecture, and real-time data integration to support large-scale business needs.',
-        'cta.projects': 'View Projects',
-        'cta.contact': 'Contact',
-        'cta.cv': 'CV',
-        'about.title': 'About',
-        'about.lead': 'I’m an Android & Backend Developer passionate about turning complex ideas into fast, secure, and user-friendly applications. With 7+ years of experience in FMCG, analytics, and mobile systems, I combine intuitive UI/UX design with scalable architecture to deliver real business impact. My mission is simple: to build technology that is practical, impactful, and reliable.',
-        "about.h1": "🏆 +50% efficiency — manual verification time slashed.",
-        "about.h2": "🚀 Offline-first & scalable — supports thousands in real time.",
-        "about.h3": "🤝 Major clients — Unilever, Nestlé, Sari Roti, AQUA, etc.",
-        "about.h4": "📊 Interactive dashboards — faster data-driven decisions.",
-        "about.h5": "🔒 Security & reliability — stable across thousands of devices.",
-        "about.h6": "🌍 National impact — supporting thousands of merchandisers.",
-        'projects.title': 'Projects',
-        'proj.demo': 'Demo / Repo',
-        'proj.case': 'Case Study',
-        'proj.live': 'Live Demo',
-        'proj1.title': 'People Counting',
-        'proj1.desc': 'In-store counting for traffic, heatmap, and journey analytics. High accuracy and real-time.',
-        'proj2.title': 'Merchandiser App',
-        'proj2.desc': 'Merchandising system with high accuracy and real-time features.',
-        'proj3.title': 'Forecast Dashboard',
-        'skills.title': 'Skills',
-        'contact.title': 'Contact',
-        'contact.head': "Let's talk 👇",
-        'contact.desc': 'Send me an email directly:',
-        'contact.email': 'Email Me',
-        'contact.dm': 'Or DM:',
-        'footer.rights': 'All rights reserved.',
-        'footer.top': 'Back to top',
-        'stats.years':'7+ yrs',
-        'stats.efficiency':'+50% efficiency',
-        'stats.users':'6K+ field users',
-        'stats.brands':'15+ company',
-        "kit.mobile":"Mobile","kit.mobile.sub":"Core mobile stack for modern Android apps.",
-        "kit.backend":"Backend","kit.backend.sub":"APIs that are reliable, secure, and scalable.",
-        "kit.db":"Database","kit.db.sub":"Fast analytics + reliable transactional storage.",
-        "kit.ai":"AI / Computer Vision","kit.ai.sub":"Practical AI on-device & at the edge.",
-        "kit.uiux":"UI / UX","kit.uiux.sub":"Usability-first with clean, consistent interfaces.",
+        en: {
+            'label.indonesian': 'Indonesia',
+            'label.english': 'English',
+            'hero.hi': "Hi, I'm",
+            'hero.pitch': 'Building Android & backend apps since 2018, focusing on intuitive UI/UX, solid architecture, and real-time data integration to support large-scale business needs.',
+            'cta.projects': 'View Projects',
+            'cta.contact': 'Contact',
+            'cta.cv': 'CV',
+            'about.title': 'About',
+            'about.lead': 'I’m an Android & Backend Developer passionate about turning complex ideas into fast, secure, and user-friendly applications. With 7+ years of experience in FMCG, analytics, and mobile systems, I combine intuitive UI/UX design with scalable architecture to deliver real business impact. My mission is simple: to build technology that is practical, impactful, and reliable.',
+            "about.h1": "🏆 +50% efficiency — manual verification time slashed.",
+            "about.h2": "🚀 Offline-first & scalable — supports thousands in real time.",
+            "about.h3": "🤝 Major clients — Unilever, Nestlé, Sari Roti, AQUA, Kanzler, Loreal, Godrej, Beiersdorf, Mondelez, etc.",
+            "about.h4": "📊 Interactive dashboards — faster data-driven decisions.",
+            "about.h5": "🔒 Security & reliability — stable across thousands of devices.",
+            "about.h6": "🌍 National impact — supporting thousands of merchandisers.",
+            'projects.title': 'Projects',
+            'proj.demo': 'Demo / Repo',
+            'proj.case': 'Case Study',
+            'proj.live': 'Live Demo',
+            'proj1.title': 'People Counting',
+            'proj1.desc': 'In-store counting for traffic, heatmap, and journey analytics. High accuracy and real-time.',
+            'proj2.title': 'Merchandiser App',
+            'proj2.desc': 'Merchandising system with high accuracy and real-time features.',
+            'proj3.title': 'Forecast Dashboard',
+            'skills.title': 'Skills',
+            'contact.title': 'Contact',
+            'contact.head': "Let's talk 👇",
+            'contact.desc': 'Send me an email directly:',
+            'contact.email': 'Email Me',
+            'contact.dm': 'Or DM:',
+            'footer.rights': 'All rights reserved.',
+            'footer.top': 'Back to top',
+            'stats.years': '7+ yrs',
+            'stats.efficiency': '+50% efficiency',
+            'stats.users': '6K+ field users',
+            'stats.brands': '15+ company',
+            "kit.mobile": "Mobile", "kit.mobile.sub": "Core mobile stack for modern Android apps.",
+            "kit.backend": "Backend", "kit.backend.sub": "APIs that are reliable, secure, and scalable.",
+            "kit.db": "Database", "kit.db.sub": "Fast analytics + reliable transactional storage.",
+            "kit.ai": "AI / Computer Vision", "kit.ai.sub": "Practical AI on-device & at the edge.",
+            "kit.uiux": "UI / UX", "kit.uiux.sub": "Usability-first with clean, consistent interfaces.",
 
-      },
-      id: {
-        'label.indonesian': 'Indonesia',
-        'label.english': 'Inggris',
-        'hero.hi': 'Hi, saya',
-        'hero.pitch': 'Membangun aplikasi Android & backend sejak 2018, berfokus pada UI/UX yang intuitif, arsitektur solid, dan integrasi data real-time untuk mendukung kebutuhan bisnis skala besar.',
-        'cta.projects': 'Lihat Projects',
-        'cta.contact': 'Kontak',
-        'cta.cv': 'CV',
-        'about.title': 'About',
-        'about.lead': 'Saya adalah Android & Backend Developer yang senang mengubah ide kompleks menjadi aplikasi cepat, aman, dan mudah digunakan. Dengan lebih dari 7 tahun pengalaman di FMCG, analitik, dan sistem mobile, saya memadukan desain UI/UX yang intuitif dengan arsitektur yang scalable untuk menciptakan solusi nyata bagi bisnis. Misi saya sederhana: menghadirkan teknologi yang praktis, berdampak, dan bisa diandalkan.',
-        "about.h1": "🏆 Efisiensi +50% — verifikasi manual berkurang drastis.",
-        "about.h2": "🚀 Offline-first & scalable — mendukung ribuan user real-time.",
-        "about.h3": "🤝 Klien besar — Unilever, Nestlé, Sari Roti, AQUA, dll.",
-        "about.h4": "📊 Dashboard interaktif — keputusan berbasis data lebih cepat.",
-        "about.h5": "🔒 Keamanan & stabilitas — andal di ribuan perangkat.",
-        "about.h6": "🌍 Dampak nasional — mendukung ribuan merchandiser di Indonesia.",
-        'projects.title': 'Projects',
-        'proj.demo': 'Demo / Repo',
-        'proj.case': 'Studi Kasus',
-        'proj.live': 'Live Demo',
-        'proj1.title': 'People Counting',
-        'proj1.desc': 'Sistem counting di toko ritel untuk traffic, heatmap, dan journey analytics. Akurasi tinggi dan realtime.',
-        'proj2.title': 'Merchandiser App',
-        'proj2.desc': 'Sistem Merchandise dengan Akurasi tinggi dan realtime.',
-        'proj3.title': 'Forecast Dashboard',
-        'skills.title': 'Skills',
-        'contact.title': 'Contact',
-        'contact.head': 'Ayo diskusi 👇',
-        'contact.desc': 'Kirim email langsung ke saya:',
-        'contact.email': 'Email Saya',
-        'contact.dm': 'Atau DM:',
-        'footer.rights': 'All rights reserved.',
-        'footer.top': 'Kembali ke atas',
-        'stats.years':'7+ tahun',
-        'stats.efficiency':'+50% efisiensi',
-        'stats.users':'6K+ pengguna lapangan',
-        'stats.brands':'15+ company',
-        "kit.mobile":"Mobile","kit.mobile.sub":"Stack mobile inti untuk aplikasi Android modern.",
-        "kit.backend":"Backend","kit.backend.sub":"API yang andal, aman, dan scalable.",
-        "kit.db":"Database","kit.db.sub":"Analitik cepat + storage transaksional yang stabil.",
-        "kit.ai":"AI / Computer Vision","kit.ai.sub":"AI praktis di perangkat & edge.",
-        "kit.uiux":"UI / UX","kit.uiux.sub":"Fokus usability dengan antarmuka yang konsisten."
-      }
+        },
+        id: {
+            'label.indonesian': 'Indonesia',
+            'label.english': 'Inggris',
+            'hero.hi': 'Hi, saya',
+            'hero.pitch': 'Membangun aplikasi Android & backend sejak 2018, berfokus pada UI/UX yang intuitif, arsitektur solid, dan integrasi data real-time untuk mendukung kebutuhan bisnis skala besar.',
+            'cta.projects': 'Lihat Projects',
+            'cta.contact': 'Kontak',
+            'cta.cv': 'CV',
+            'about.title': 'About',
+            'about.lead': 'Saya adalah Android & Backend Developer yang senang mengubah ide kompleks menjadi aplikasi cepat, aman, dan mudah digunakan. Dengan lebih dari 7 tahun pengalaman di FMCG, analitik, dan sistem mobile, saya memadukan desain UI/UX yang intuitif dengan arsitektur yang scalable untuk menciptakan solusi nyata bagi bisnis. Misi saya sederhana: menghadirkan teknologi yang praktis, berdampak, dan bisa diandalkan.',
+            "about.h1": "🏆 Efisiensi +50% — verifikasi manual berkurang drastis.",
+            "about.h2": "🚀 Offline-first & scalable — mendukung ribuan user real-time.",
+            "about.h3": "🤝 Major clients — Unilever, Nestlé, Sari Roti, AQUA, Kanzler, Loreal, Godrej, Beiersdorf, Mondelez, dll.",
+            "about.h4": "📊 Dashboard interaktif — keputusan berbasis data lebih cepat.",
+            "about.h5": "🔒 Keamanan & stabilitas — andal di ribuan perangkat.",
+            "about.h6": "🌍 Dampak nasional — mendukung ribuan merchandiser di Indonesia.",
+            'projects.title': 'Projects',
+            'proj.demo': 'Demo / Repo',
+            'proj.case': 'Studi Kasus',
+            'proj.live': 'Live Demo',
+            'proj1.title': 'People Counting',
+            'proj1.desc': 'Sistem counting di toko ritel untuk traffic, heatmap, dan journey analytics. Akurasi tinggi dan realtime.',
+            'proj2.title': 'Merchandiser App',
+            'proj2.desc': 'Sistem Merchandise dengan Akurasi tinggi dan realtime.',
+            'proj3.title': 'Forecast Dashboard',
+            'skills.title': 'Skills',
+            'contact.title': 'Contact',
+            'contact.head': 'Ayo diskusi 👇',
+            'contact.desc': 'Kirim email langsung ke saya:',
+            'contact.email': 'Email Saya',
+            'contact.dm': 'Atau DM:',
+            'footer.rights': 'All rights reserved.',
+            'footer.top': 'Kembali ke atas',
+            'stats.years': '7+ tahun',
+            'stats.efficiency': '+50% efisiensi',
+            'stats.users': '6K+ pengguna lapangan',
+            'stats.brands': '15+ company',
+            "kit.mobile": "Mobile", "kit.mobile.sub": "Stack mobile inti untuk aplikasi Android modern.",
+            "kit.backend": "Backend", "kit.backend.sub": "API yang andal, aman, dan scalable.",
+            "kit.db": "Database", "kit.db.sub": "Analitik cepat + storage transaksional yang stabil.",
+            "kit.ai": "AI / Computer Vision", "kit.ai.sub": "AI praktis di perangkat & edge.",
+            "kit.uiux": "UI / UX", "kit.uiux.sub": "Fokus usability dengan antarmuka yang konsisten."
+        }
     };
 
-    const ID_TIMEZONES = new Set(['Asia/Jakarta','Asia/Makassar','Asia/Jayapura']);
+    const ID_TIMEZONES = new Set(['Asia/Jakarta', 'Asia/Makassar', 'Asia/Jayapura']);
 
-    function detectDefaultLang(){
-      const saved = localStorage.getItem('lang');
-      if (saved && (saved in DICT)) return saved;
-      try{
-        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        if (ID_TIMEZONES.has(tz)) return 'id';
-      }catch(e){}
-      const nav = (navigator.language || 'en').toLowerCase();
-      if (nav.startsWith('id')) return 'id';
-      return 'en';
+    function detectDefaultLang() {
+        const saved = localStorage.getItem('lang');
+        if (saved && (saved in DICT)) return saved;
+        try {
+            const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            if (ID_TIMEZONES.has(tz)) return 'id';
+        } catch (e) {
+        }
+        const nav = (navigator.language || 'en').toLowerCase();
+        if (nav.startsWith('id')) return 'id';
+        return 'en';
     }
 
-    function applyLang(lang){
-      const dict = DICT[lang] || DICT.en;
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        const val = dict[key];
-        if (typeof val === 'string') el.textContent = val;
-      });
-      document.querySelectorAll('.lang-btn').forEach(btn=>{
-        btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
-      });
-      localStorage.setItem('lang', lang);
-      document.documentElement.lang = lang;
+    function applyLang(lang) {
+        const dict = DICT[lang] || DICT.en;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            const val = dict[key];
+            if (typeof val === 'string') el.textContent = val;
+        });
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
+        });
+        localStorage.setItem('lang', lang);
+        document.documentElement.lang = lang;
     }
 
-    document.getElementById('btn-id').addEventListener('click', ()=>applyLang('id'));
-    document.getElementById('btn-en').addEventListener('click', ()=>applyLang('en'));
-    
+    document.getElementById('btn-id').addEventListener('click', () => applyLang('id'));
+    document.getElementById('btn-en').addEventListener('click', () => applyLang('en'));
+
     // Init
     applyLang(detectDefaultLang());
-  </script>
+</script>
 
-  <script src="assets/js/main.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/projects.js?v=3"></script>
 </body>
 </html>

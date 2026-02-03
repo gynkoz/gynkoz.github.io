@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Project Detail</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="blue lighten-5">
+<nav class="white" style="border-bottom:1px solid var(--m3-outline)">
+    <div class="nav-wrapper container">
+        <a href="index.html#projects" class="blue-text text-darken-2">
+            <i class="material-icons left">arrow_back</i>Kembali
+        </a>
+    </div>
+</nav>
+
+<main class="section white">
+    <div class="container" id="project-detail"></div>
+</main>
+
+<script src="assets/js/projects.js"></script>
+<script>
+    (function(){
+        const params = new URLSearchParams(location.search);
+        const slug = params.get('p');
+        const lang = (document.documentElement.lang || 'id').startsWith('en') ? 'en' : 'id';
+        const data = (window.PROJECTS || []).find(x => x.id === slug);
+        const el = document.getElementById('project-detail');
+        if (!el) return;
+
+        if (!data){
+            el.innerHTML = '<p>Project tidak ditemukan.</p>';
+            return;
+        }
+
+        const t = (obj) => (obj && (obj[lang] || obj.id || obj.en)) || '';
+        const chips = (data.chips||[]).map(c=>`<div class="chip blue white-text">${c}</div>`).join('');
+        const stack = (data.stack||[]).map(s=>`<span class="chip">${s}</span>`).join('');
+        const features = (data.features||[]).map(f=>`<li><i class="material-icons tiny">check_circle</i> ${t(f)}</li>`).join('');
+        const metrics = (data.metrics||[]).map(m=>`<div class="chip grey lighten-3">${m.label}: <b>${m.value}</b></div>`).join('');
+        const links = Object.entries(data.links||{})
+            .filter(([_,v])=>!!v)
+            .map(([k,v])=>`<a class="btn white waves-effect" href="${v}" target="_blank" rel="noopener" style="margin-right:8px"><i class="material-icons left">open_in_new</i>${k.toUpperCase()}</a>`)
+            .join('');
+
+        const gallery = data.gallery && data.gallery.length ? data.gallery : [data.image];
+        const main = gallery[0];
+
+        el.innerHTML = `
+    <h3 class="blue-text text-darken-2">${t(data.title)}</h3>
+
+    <div class="card" style="overflow:hidden">
+      <div class="card-image" id="gallery-main">
+        <img src="${main}" alt="${t(data.title)}" class="responsive-img" style="max-height:520px;object-fit:cover">
+      </div>
+      <div class="card-content">
+        <p style="font-size:1.05rem">${t(data.desc)}</p>
+        <div style="margin:12px 0">${chips}</div>
+
+        <div class="row" style="margin-top:8px">
+          <div class="col s12 m8">
+            <h6 class="blue-text text-darken-2" style="font-weight:700">Key Points</h6>
+            <ul class="browser-default" style="margin-left:16px">${features || '<li>-</li>'}</ul>
+          </div>
+          <div class="col s12 m4">
+            <h6 class="blue-text text-darken-2" style="font-weight:700">Quick Facts</h6>
+            <ul class="collection">
+              ${data.client ? `<li class="collection-item"><i class="material-icons left">business</i>${data.client}</li>` : ''}
+              ${data.role ? `<li class="collection-item"><i class="material-icons left">badge</i>${data.role}</li>` : ''}
+              ${data.period ? `<li class="collection-item"><i class="material-icons left">event</i>${data.period}</li>` : ''}
+              <li class="collection-item"><i class="material-icons left">build</i><div>${stack || '-'}</div></li>
+              ${metrics ? `<li class="collection-item"><i class="material-icons left">insights</i><div>${metrics}</div></li>` : ''}
+            </ul>
+            <div style="margin-top:8px">${links}</div>
+          </div>
+        </div>
+
+        ${gallery.length > 1 ? `
+        <div class="gallery-thumbs" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px">
+          ${gallery.map((g,i)=>`
+            <button class="thumb-btn" data-src="${g}" aria-label="Preview ${i+1}" style="border:none;background:#fff;padding:0;cursor:pointer">
+              <img src="${g}" alt="thumb-${i}" style="width:108px;height:72px;object-fit:cover;border-radius:8px;border:2px solid ${i===0?'#1e88e5':'transparent'}">
+            </button>
+          `).join('')}
+        </div>` : ''}
+      </div>
+    </div>
+  `;
+
+        // Thumb interaksi (ganti gambar utama + border state)
+        const mainEl = document.querySelector('#gallery-main img');
+        document.querySelectorAll('.thumb-btn').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const src = btn.getAttribute('data-src');
+                if (!src || !mainEl) return;
+                mainEl.src = src;
+                document.querySelectorAll('.thumb-btn img').forEach(img => img.style.borderColor = 'transparent');
+                btn.querySelector('img').style.borderColor = '#1e88e5'; // M3 primary-ish
+            });
+        });
+    })();
+</script>
+</body>
+</html>

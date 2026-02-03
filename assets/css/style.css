@@ -253,3 +253,408 @@ a.btn, a.btn-large, a.btn-small{ color: var(--m3-on-primary) !important; }
     background: #fff;
     box-shadow: 0 8px 22px rgba(0,0,0,.12);
 }
+
+/* ===== One-Page Snap + Reveal + Dots ===== */
+
+/* Container pakai dokumen (body scroll), jadi cukup atur section */
+.snap-section{
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: grid;
+    place-items: center;
+    position: relative;
+    padding: 48px 20px;
+}
+
+/* Aktifkan snap pada root scroller */
+html, body{
+    height: 100%;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+/* Reveal animation (dipicu IntersectionObserver) */
+.reveal{
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+.reveal.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Dot navigation di kanan */
+.dots-nav{
+    position: fixed;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1000;
+}
+.dots-nav a{
+    width: 10px; height: 10px; border-radius: 999px;
+    background: rgba(0,0,0,.08);
+    border: 1px solid var(--m3-outline);
+    display: block;
+    transition: transform .2s ease, background .2s ease, border-color .2s ease;
+}
+.dots-nav a:hover{ transform: scale(1.15); }
+.dots-nav a.active{
+    background: var(--m3-primary);
+    border-color: var(--m3-primary);
+    transform: scale(1.25);
+}
+
+/* Parallax ringan di hero (container) */
+.hero-parallax{
+    position: relative;
+    display: inline-block;
+    will-change: transform;
+}
+
+/* Biar footer gak ‘nyangkut’ di snap */
+.page-footer{ scroll-snap-align: end; }
+
+/* Responsif: kecilkan jarak di mobile */
+@media (max-width: 600px){
+    .snap-section{ padding: 32px 16px; }
+}
+
+/* ===== Scroll hint (hero) ===== */
+#home { position: relative; } /* pastikan posisi relatif pada section hero */
+
+.scroll-hint{
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.95);
+    color: var(--m3-primary);
+    box-shadow: var(--elev-1);
+    font-weight: 700;
+    transition: opacity .3s ease, transform .3s ease;
+    z-index: 10;
+}
+.scroll-hint .material-icons{
+    line-height: 1;
+    animation: hint-bounce 1.2s infinite;
+}
+
+/* sembunyikan saat user mulai scroll / masuk section berikutnya */
+.scroll-hint.hide{
+    opacity: 0;
+    transform: translate(-50%, 10px);
+    pointer-events: none;
+}
+
+@keyframes hint-bounce{
+    0%,100%{ transform: translateY(0); }
+    50%    { transform: translateY(4px); }
+}
+
+/* ==== Disable smooth-behavior; kita kontrol via JS ==== */
+html, body { scroll-behavior: auto !important; }
+
+/* (Opsional) kalau sebelumnya kamu aktifkan scroll-snap, nonaktifkan: */
+html, body { scroll-snap-type: none !important; }
+.snap-section { scroll-snap-align: none !important; }
+
+
+/* ============ PROJECTS: card hover + strip horizontal (fixed) ============ */
+
+/*!* Strip horizontal (paksa override .row Materialize) *!*/
+#projects #project-grid{
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    gap:18px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding:6px 4px 10px;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+}
+#projects #project-grid::-webkit-scrollbar{ display:none; }
+
+#projects #project-grid .project-item{ flex:0 0 auto; scroll-snap-align:start; }
+
+#projects #project-grid .project-card{ display:block; width:min(360px,86vw); border-radius:var(--rad-m); color:inherit; }
+#projects #project-grid .project-card:hover{ text-decoration:none; cursor:pointer; }
+
+/* Matikan “pill” judul & card-reveal */
+/*#projects #project-grid .card .card-content .card-title,*/
+/*#projects #project-grid .card .card-reveal,*/
+/*#projects #project-grid .card .activator{*/
+/*    background:transparent !important;*/
+/*    box-shadow:none !important;*/
+/*    border:none !important;*/
+/*    border-radius:0 !important;*/
+/*    display:none; !* untuk .card-reveal/.activator; judul kita pakai .project-title *!*/
+/*}*/
+
+/* Hover efek (angkat + zoom + sheen) */
+#projects #project-grid .card{
+    transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease, background .35s ease;
+    will-change:transform, box-shadow;
+}
+#projects #project-grid .card:hover{
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0 14px 36px rgba(0,0,0,.16), var(--elev-2);
+    border-color:var(--m3-primary);
+    background:var(--m3-surface);
+}
+#projects #project-grid .card .card-image{ overflow:hidden; position:relative; }
+#projects #project-grid .card .card-image img{ transition:transform .6s ease; transform:scale(1); display:block; width:100%; height:auto; }
+#projects #project-grid .card:hover .card-image img{ transform:scale(1.06); }
+#projects #project-grid .card .card-image::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(75deg, rgba(255,255,255,0) 30%, rgba(255,255,255,.18) 50%, rgba(255,255,255,0) 70%);
+    transform:translateX(-120%); transition:transform .9s ease; pointer-events:none;
+}
+#projects #project-grid .card:hover .card-image::after{ transform:translateX(120%); }
+
+#projects #project-grid .card .card-content > *{ transition:transform .25s ease, opacity .25s ease; }
+#projects #project-grid .card:hover .card-content > *{ transform:translateY(-2px); }
+
+
+/* ===== Projects: 1 box layout (image -> title -> chips -> desc) ===== */
+
+/* Matikan elemen Materialize yang bikin pill/popup */
+#projects #project-grid .card .card-reveal,
+#projects #project-grid .card .activator,
+#projects #project-grid .card .card-title{ display:none !important; }
+
+/* Card content bersih */
+#projects #project-grid .card .card-content{
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+    padding: 16px 18px 18px;
+}
+
+/* Header judul + icon tiga titik */
+#projects #project-grid .project-head{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px; margin: 6px 0 10px;
+}
+#projects #project-grid .project-title{
+    all: unset;
+    display:block;
+    font-weight:800;
+    line-height:1.2;
+    font-size: clamp(1.05rem, 1.4vw, 1.6rem);
+    color: inherit;
+}
+#projects #project-grid .more-icon{ opacity:.5; }
+
+/* Chips bar */
+#projects #project-grid .project-chips{ display:flex; flex-wrap:wrap; gap:8px; margin: 2px 0 10px; }
+
+/* Deskripsi */
+#projects #project-grid .project-desc{
+    margin: 4px 0 0;
+    color: rgba(0,0,0,.72);
+    font-size: .98rem;
+    line-height: 1.45;
+}
+
+/* (opsional) garis pemisah halus antara gambar & konten agar mirip contoh */
+#projects #project-grid .card .card-image{ border-bottom: 1px solid rgba(0,0,0,.06); }
+
+/*_________________________*/
+
+/*!* grid bukan flex; hanya viewport untuk trek *!*/
+/*#projects #project-grid{*/
+/*    display:block !important;*/
+/*    overflow:hidden;*/
+/*    padding:6px 0;*/
+/*}*/
+
+/*!* trek berjalan (2 lane) *!*/
+/*#projects #project-grid .auto-track{*/
+/*    display:flex;*/
+/*    width:max-content;*/
+/*    animation: projMarquee var(--proj-speed, 12s) linear infinite;*/
+/*    will-change:transform;*/
+/*}*/
+
+/*!* pause saat hover agar bisa dibaca/klik *!*/
+/*#projects #project-grid:hover .auto-track{ animation-play-state: paused; }*/
+
+/*!* lane berisi kartu *!*/
+/*#projects #project-grid .lane{ display:flex; gap:18px; }*/
+
+/*!* kartu tetap 1 box seperti sekarang *!*/
+/*#projects #project-grid .project-item{ flex:0 0 auto; }*/
+/*#projects #project-grid .project-card{ width:min(360px,86vw); }*/
+
+
+
+
+/*!* ===== Projects: CSS auto-carousel (seamless) ===== *!*/
+/*#projects #project-grid{*/
+/*    display:block !important;*/
+/*    overflow:hidden;*/
+/*    padding:6px 0;*/
+/*    --proj-gap: 8px;                 !* jarak antar kartu *!*/
+/*    --proj-speed: 3s;                !* kecepatan: kecil = lebih cepat *!*/
+/*}*/
+
+/*!* trek berjalan *!*/
+/*#projects #project-grid .auto-track{*/
+/*    display:flex;*/
+/*    width:max-content;*/
+/*    animation: projMarquee var(--proj-speed) linear infinite;*/
+/*    will-change: transform;*/
+/*}*/
+
+/*!* pause saat hover *!*/
+/*#projects #project-grid:hover .auto-track{*/
+/*    animation-play-state: paused;*/
+/*}*/
+
+/*!* dua lane identik *!*/
+/*#projects #project-grid .lane{*/
+/*    display:flex;*/
+/*    gap: var(--proj-gap);             !* jarak antar kartu di dalam lane *!*/
+/*}*/
+
+/*!* TAMBAHKAN gap antar-lane DI SINI, bukan di .auto-track *!*/
+/*#projects #project-grid .lane:first-child{*/
+/*    margin-right: var(--proj-gap);*/
+/*}*/
+
+/*!* kartu tetap 1 box *!*/
+/*#projects #project-grid .project-item{ flex:0 0 auto; }*/
+/*#projects #project-grid .project-card{ width:min(360px,86vw); }*/
+
+/*!* jangan pakai spacer di trek *!*/
+/*#projects #project-grid .auto-track::after{ content:none; }*/
+
+/*@keyframes projMarquee{*/
+/*    from { transform: translate3d(0,0,0); }*/
+/*    to   { transform: translate3d(-47%,0,0); }  !* tepat 1 lane *!*/
+/*}*/
+
+/* viewport */
+#projects #project-grid{
+    display:block !important;
+    overflow:hidden;
+    padding:6px 0;
+    --proj-gap: 18px;                 /* jarak antar kartu */
+}
+
+/* trek & lane (TANPA animation) */
+#projects #project-grid .auto-track{ display:flex; will-change: transform; }
+#projects #project-grid .lane{ display:flex; gap: var(--proj-gap); }
+/* jarak antar-lane supaya sambungan rapi */
+#projects #project-grid .lane:first-child{ margin-right: var(--proj-gap); }
+
+/* kartu tetap 1 box */
+#projects #project-grid .project-item{ flex:0 0 auto; }
+#projects #project-grid .project-card{ width:min(360px,86vw); }
+
+/*____________________________*/
+
+/* === Projects Modal (Show All) === */
+#projectsModal.modal{
+    border-radius: var(--rad-m, 16px);
+    overflow: hidden;              /* clamp footer/header to radius */
+}
+#projectsModal .modal-content{
+    border-top-left-radius: var(--rad-m, 16px);
+    border-top-right-radius: var(--rad-m, 16px);
+}
+#projectsModal .input-field input[type="search"]{ border-bottom: none; box-shadow: none; }
+#projectsModal .input-field .prefix { top: .4rem; color: #90a4ae; }
+#projectsModal .modal-footer{
+    border-bottom-left-radius: var(--rad-m, 16px);
+    border-bottom-right-radius: var(--rad-m, 16px);
+}
+
+.chip-filter { display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 12px; }
+.chip-filter .chip { cursor: pointer; }
+.chip-filter .chip.is-selected { background: var(--m3-primary); color: var(--m3-on-primary); }
+
+.project-card-grid .card-image img {
+    width: 100%; height: 180px; object-fit: cover;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+/* === Search outlined pill, compact, max-width seperti input === */
+.search-wrap{ max-width: 560px; }            /* batasi lebar supaya tidak full row */
+@media (max-width: 600px){ .search-wrap{ max-width: 100%; } }
+
+.searchbox{
+    display:flex; align-items:center; gap:10px;
+    padding: 6px 12px;
+    height: 42px; min-height:42px;
+    border-radius: 16px;                        /* sama dgn kartu kamu */
+    background: #fff;
+    border: 1.5px solid var(--m3-outline);      /* outline */
+    box-shadow: none;                           /* no hover shadow */
+}
+.searchbox:focus-within{ border-color: var(--m3-primary); }
+
+.searchbox .material-icons{
+    font-size: 20px; line-height:1; opacity:.6;
+}
+
+.searchbox input{
+    all: unset; width:100%;
+    font-size: 0.95rem; line-height:1;
+    border:0 !important; box-shadow:none !important;
+    position: relative;
+    top: 3px;
+    -webkit-appearance: none;                   /* hilangkan dekorasi search Safari/Chrome */
+}
+
+/* Modal radius = kartu */
+#projectsModal.modal{
+    border-radius: var(--rad-m, 16px);
+    overflow: hidden;
+}
+#projectsModal .modal-content{ border-top-left-radius: var(--rad-m,16px); border-top-right-radius: var(--rad-m,16px); }
+#projectsModal .modal-footer{ border-bottom-left-radius: var(--rad-m,16px); border-bottom-right-radius: var(--rad-m,16px); }
+#projectsModal .modal-content{ overscroll-behavior: contain; }
+
+/* Kartu di modal: pakai style yang sama dgn strip Projects */
+.project-card-grid.card{ border-radius: var(--rad-m); border:1px solid var(--m3-outline); box-shadow: var(--elev-1); }
+.project-card-grid .card-image img{ width:100%; height:180px; object-fit:cover; }
+
+/* === Cards in modal: samakan dengan kartu di homepage === */
+.project-card-grid.card{
+    display:block;
+    border-radius: var(--rad-m);
+    color: inherit;
+    background: #fff;
+    border: 1px solid var(--m3-outline-variant);
+    box-shadow: var(--elev-1);
+    transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease, background .35s ease;
+    will-change: transform, box-shadow;
+}
+.project-card-grid.card:hover{
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 14px 36px rgba(0,0,0,.16), var(--elev-2);
+    border-color: var(--m3-primary);
+    background: var(--m3-surface);
+}
+.project-card-grid .card-image{ overflow:hidden; position:relative; border-bottom:1px solid rgba(0,0,0,.06); }
+.project-card-grid .card-image img{ width:100%; height:180px; object-fit:cover; display:block; transition:transform .6s ease; }
+.project-card-grid.card:hover .card-image img{ transform: scale(1.06); }
+.project-card-grid .card-content{ background:transparent; border:0; box-shadow:none; padding:16px 18px 18px; }
+.project-card-grid .project-head{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin:6px 0 10px; }
+.project-card-grid h6{ font-weight:800; margin:0; }
+.project-card-grid .project-chips{ display:flex; gap:6px; flex-wrap:wrap; margin:8px 0; }
+.project-card-grid .project-desc{ margin:0; line-height:1.45; }
+
+
