@@ -50,8 +50,9 @@
                 { id:'Material3 UI + aksesibilitas', en:'Material3 UI + accessibility' }
             ],
             metrics: [
-                { label:'Users', value:'6K+ field users' },
-                { label:'Crash rate', value:'<0.3%' }
+                { label:'Users', value:'8K+' },
+                { label:'Audit Accuracy', value:'High' },
+                { label:'Manual Tracking', value:'Digitalized' }
             ],
             client: 'Pitjarus',
             period: '2021 — ongoing',
@@ -86,7 +87,7 @@
             role: 'Fullstack Engineer',
             gallery: ['assets/img/placeholder.png','assets/img/placeholder.png'],
             image: 'assets/img/placeholder.png',
-            links: { live:'#' }
+            links: { }
         },
 
         {
@@ -112,7 +113,7 @@
             role: 'Fullstack Engineer',
             gallery: ['assets/img/placeholder.png','assets/img/placeholder.png'],
             image: 'assets/img/placeholder.png',
-            links: { live:'#' }
+            links: { }
         }
     ];
 

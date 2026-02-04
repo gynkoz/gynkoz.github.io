@@ -24,6 +24,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Theme toggle (light/dark)
+    const themeButtons = document.querySelectorAll('.theme-btn');
+    const applyTheme = (theme) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        themeButtons.forEach(btn => {
+            btn.setAttribute('aria-pressed', String(btn.dataset.theme === theme));
+        });
+    };
+    if (themeButtons.length) {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initial = saved || (prefersDark ? 'dark' : 'light');
+        applyTheme(initial);
+        themeButtons.forEach(btn => btn.addEventListener('click', () => applyTheme(btn.dataset.theme)));
+    }
+
     // Smooth scroll (semua anchor internal)
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', (e) => {
