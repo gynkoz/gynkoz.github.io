@@ -26,57 +26,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="assets/css/style.css"/>
 
-    <style>
-        /* === Toggle Bar (Language) === */
-        .lang-toggle {
-            position: fixed;
-            top: 14px;
-            right: 14px;
-            z-index: 1000;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            background: #fff;
-            border-radius: 999px;
-            padding: 4px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, .12)
-        }
-
-        .lang-btn {
-            border: none;
-            background: transparent;
-            border-radius: 999px;
-            padding: 6px 10px;
-            font-weight: 600;
-            cursor: pointer;
-            color: #1565c0;
-            display: flex;
-            align-items: center
-        }
-
-        .lang-btn[aria-pressed="true"] {
-            background: #e3f2fd;
-            color: #0d47a1
-        }
-
-        .lang-flag {
-            font-size: 16px;
-            margin-right: 6px
-        }
-
-        @media (max-width: 600px) {
-            .lang-toggle {
-                top: 10px;
-                right: 10px;
-                padding: 3px
-            }
-
-            .lang-btn {
-                padding: 6px 8px
-            }
-        }
-    </style>
-
     <!-- Open Graph -->
     <meta property="og:title" content="Portfolio — Andreafif Cyto Prasadana Sutrisno">
     <meta property="og:description"
@@ -120,10 +69,12 @@
 
 <!-- Lang Toggle -->
 <div class="lang-toggle" role="group" aria-label="Language toggle">
-    <button class="lang-btn" id="btn-id" data-lang="id" aria-pressed="false" title="Bahasa Indonesia"><span
-            class="lang-flag">🇮🇩</span><span data-i18n="label.indonesian">Indonesia</span></button>
-    <button class="lang-btn" id="btn-en" data-lang="en" aria-pressed="false" title="English"><span
-            class="lang-flag">🌐</span><span data-i18n="label.english">English</span></button>
+    <button class="lang-btn" id="btn-id" data-lang="id" aria-pressed="false" title="Bahasa Indonesia">
+        <span class="lang-flag">ID</span><span>Indonesia</span>
+    </button>
+    <button class="lang-btn" id="btn-en" data-lang="en" aria-pressed="false" title="English">
+        <span class="lang-flag">EN</span><span>English</span>
+    </button>
 </div>
 
 <!-- Hero -->
@@ -477,6 +428,8 @@
 </script>
 
 <script src="assets/js/main.js"></script>
-<script src="assets/js/projects.js?v=3"></script>
+<script src="assets/js/projects.js?v=4"></script>
+<script src="assets/js/projects-home.js?v=4"></script>
 </body>
 </html>
+

@@ -14,6 +14,26 @@
             }
         })();
     </script>
+    <script>
+        (function () {
+            try {
+                const savedLang = localStorage.getItem('lang');
+                if (savedLang === 'id' || savedLang === 'en') {
+                    document.documentElement.lang = savedLang;
+                    return;
+                }
+                const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                const isId = tz === 'Asia/Jakarta' || tz === 'Asia/Makassar' || tz === 'Asia/Jayapura';
+                if (isId) {
+                    document.documentElement.lang = 'id';
+                    return;
+                }
+                const nav = (navigator.language || 'en').toLowerCase();
+                document.documentElement.lang = nav.startsWith('id') ? 'id' : 'en';
+            } catch (e) {
+            }
+        })();
+    </script>
     <title>Project Detail</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,11 +44,19 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="page case-page">
+<div class="lang-toggle" role="group" aria-label="Language toggle">
+    <button class="lang-btn" id="btn-id" data-lang="id" aria-pressed="false" title="Bahasa Indonesia">
+        <span class="lang-flag">ID</span><span>Indonesia</span>
+    </button>
+    <button class="lang-btn" id="btn-en" data-lang="en" aria-pressed="false" title="English">
+        <span class="lang-flag">EN</span><span>English</span>
+    </button>
+</div>
 <header class="case-header">
     <div class="case-header-inner">
         <a href="index.html#projects" class="case-back">
             <span class="material-symbols-outlined">arrow_back</span>
-            <span>Back</span>
+            <span class="case-back-label">Back</span>
         </a>
         <div class="case-divider"></div>
         <div class="case-head">
@@ -42,342 +70,42 @@
     <div class="case-container" id="project-detail"></div>
 </main>
 
-<script src="assets/js/projects.js"></script>
 <script>
-    (function(){
-        const params = new URLSearchParams(location.search);
-        const slug = params.get('p');
-        const lang = (document.documentElement.lang || 'id').startsWith('en') ? 'en' : 'id';
-        const loadingText = lang === 'en' ? 'Loading image...' : 'Memuat gambar...';
-        const errorText = lang === 'en' ? 'Image failed to load.' : 'Gambar gagal dimuat.';
-        const data = (window.PROJECTS || []).find(x => x.id === slug);
-        const el = document.getElementById('project-detail');
-        if (!el) return;
+    (function () {
+        const btnId = document.getElementById('btn-id');
+        const btnEn = document.getElementById('btn-en');
+        if (!btnId || !btnEn) return;
 
-        el.classList.add('page-enter');
-        if (!data){
-            el.innerHTML = '<p>Project tidak ditemukan.</p>';
-            requestAnimationFrame(() => el.classList.add('show'));
-            return;
+        const normalize = (lang) => (lang || 'id').toLowerCase().startsWith('en') ? 'en' : 'id';
+        const setPressed = (lang) => {
+            const current = normalize(lang);
+            btnId.setAttribute('aria-pressed', String(current === 'id'));
+            btnEn.setAttribute('aria-pressed', String(current === 'en'));
+        };
+
+        try {
+            localStorage.setItem('lang', normalize(document.documentElement.lang));
+        } catch (e) {
         }
+        setPressed(document.documentElement.lang);
 
-        const t = (obj) => {
-            if (!obj) return '';
-            if (typeof obj === 'string') return obj;
-            return obj[lang] || obj.id || obj.en || '';
-        };
-        const labels = {
-            caps: lang === 'en' ? 'Core Capabilities' : 'Core Capabilities',
-            capsDesc: lang === 'en'
-                ? 'Built for retail audit operations and high-volume store execution.'
-                : 'Dibuat untuk audit ritel dan eksekusi toko skala besar.',
-            screens: lang === 'en' ? 'Real App Screenshots' : 'Real App Screenshots',
-            screensDesc: lang === 'en'
-                ? 'Preview the native Android experience. Some data is anonymized.'
-                : 'Preview pengalaman native Android. Beberapa data disamarkan.',
-            screen: lang === 'en' ? 'Screen' : 'Tampilan'
-        };
-        const badgeText = t(data.badge) || 'Used in Production';
-        const titleText = t(data.title);
-        const titleLead = t(data.titleLead) || titleText;
-        const titleAccent = t(data.titleAccent);
-        const heroTitle = titleAccent
-            ? `${titleLead}<br><span class="hero-title-accent">${titleAccent}</span>`
-            : titleText;
-        const tags = (data.chips || []);
-        const tagChips = tags.length
-            ? tags.slice(0,3).map(c=>`<span class="chip tag-chip">${c}</span>`).join('') +
-              (tags.length > 3 ? `<span class="chip tag-chip">+${tags.length-3}</span>` : '')
-            : '';
-
-        const splitFeature = (text) => {
-            if (!text) return {title:'Capability', desc:''};
-            if (text.includes('—') || text.includes('â€”')) {
-                const parts = text.split(/—|â€”/);
-                return {title: parts[0].trim(), desc: parts.slice(1).join('—').trim()};
+        const applyLang = (lang) => {
+            const next = normalize(lang);
+            if (normalize(document.documentElement.lang) === next) return;
+            try {
+                localStorage.setItem('lang', next);
+            } catch (e) {
             }
-            if (text.includes(' - ')) {
-                const parts = text.split(' - ');
-                return {title: parts[0].trim(), desc: parts.slice(1).join(' - ').trim()};
-            }
-            return {title:text.trim(), desc:''};
-        };
-        const capIcon = (text) => {
-            const l = (text || '').toLowerCase();
-            if (l.includes('gps') || l.includes('location')) return 'location_on';
-            if (l.includes('photo') || l.includes('camera')) return 'photo_camera';
-            if (l.includes('sync') || l.includes('offline')) return 'sync';
-            if (l.includes('audit')) return 'fact_check';
-            if (l.includes('cv') || l.includes('ai') || l.includes('vision')) return 'auto_awesome';
-            return 'apps';
-        };
-        const desiredCaps = 7;
-        let capabilities = Array.isArray(data.capabilities) ? data.capabilities : [];
-        if (!capabilities.length && Array.isArray(data.features)) {
-            capabilities = data.features.slice(0, desiredCaps).map(f => {
-                const raw = t(f);
-                const parts = splitFeature(raw);
-                return { title: parts.title, desc: parts.desc, icon: capIcon(raw) };
-            });
-        }
-        if (!capabilities.length) {
-            capabilities = Array.from({length: desiredCaps}, () => ({
-                title: 'Capability Title',
-                desc: 'Short capability description goes here.',
-                icon: 'apps'
-            }));
-        } else if (capabilities.length < desiredCaps) {
-            const missing = desiredCaps - capabilities.length;
-            capabilities = capabilities.concat(
-                Array.from({length: missing}, () => ({
-                    title: 'Capability Title',
-                    desc: 'Short capability description goes here.',
-                    icon: 'apps'
-                }))
-            );
-        }
-        const capCards = capabilities.map(c => {
-            const title = t(c.title || c);
-            const desc = t(c.desc) || '';
-            const icon = c.icon || capIcon(`${title} ${desc}`);
-            return `
-              <div class="cap-card">
-                <div class="cap-icon"><span class="material-symbols-outlined">${icon}</span></div>
-                <div class="cap-title">${title}</div>
-                ${desc ? `<div class="cap-desc">${desc}</div>` : ''}
-              </div>`;
-        }).join('');
-
-        const desiredShots = 7;
-        const rawShots = (data.screenshots && data.screenshots.length)
-            ? data.screenshots
-            : (data.gallery && data.gallery.length ? data.gallery : [data.image]);
-        let shots = rawShots.slice(0, desiredShots);
-        if (shots.length < desiredShots) {
-            const missing = desiredShots - shots.length;
-            shots = shots.concat(Array.from({length: missing}, () => 'assets/img/placeholder.png'));
-        }
-        const shotCards = shots.map((s,i)=>{
-            const src = (typeof s === 'string') ? s : (s.src || s.image || '');
-            const finalSrc = src || 'assets/img/placeholder.png';
-            const label = (typeof s === 'object' && s.label) ? t(s.label) : `${labels.screen} ${i+1}`;
-            return `
-              <figure class="shot-card">
-                <div class="shot-frame media-slot">
-                  <div class="img-loader" aria-hidden="true">
-                    <div class="img-spinner"></div>
-                    <div class="img-loader-text">${loadingText}</div>
-                  </div>
-                  <img src="${finalSrc}" alt="${label}" loading="lazy">
-                </div>
-                <figcaption class="shot-cap">${label}</figcaption>
-              </figure>`;
-        }).join('');
-        const dotCount = shots.length;
-        const screenDots = dotCount
-            ? Array.from({length: dotCount}, (_,i)=>`<span class="screen-dot${i===0 ? ' active' : ''}"></span>`).join('')
-            : '';
-
-        const heroImg = data.heroImage || data.hero || data.image || 'assets/img/placeholder.png';
-        const heroGhostImg = data.heroGhostImage || data.heroSecondary || 'assets/img/placeholder.png';
-        const meta = [
-            data.role ? `<span class="meta-pill"><span class="material-symbols-outlined">badge</span>${data.role}</span>` : '',
-            data.period ? `<span class="meta-pill"><span class="material-symbols-outlined">event</span>${data.period}</span>` : '',
-            data.client ? `<span class="meta-pill"><span class="material-symbols-outlined">business</span>${data.client}</span>` : ''
-        ].join('');
-        const metaBlock = meta.trim() ? `<div class="case-meta">${meta}</div>` : '';
-        const tagBlock = tagChips ? `<div class="chip-row tag-row">${tagChips}</div>` : '';
-
-        el.innerHTML = `
-    <section class="hero-grid">
-      <div class="hero-copy">
-        <div class="hero-badge">
-          <span class="material-symbols-outlined">verified</span>
-          <span>${badgeText}</span>
-        </div>
-        <h1 class="hero-title">${heroTitle}</h1>
-        <p class="hero-desc">${t(data.desc)}</p>
-        ${metaBlock}
-        ${tagBlock}
-      </div>
-      <div class="hero-art">
-        <div class="hero-device hero-device-main media-slot" id="hero-media">
-          <div class="img-loader" aria-hidden="true">
-            <div class="img-spinner"></div>
-            <div class="img-loader-text">${loadingText}</div>
-          </div>
-          <img src="${heroImg}" alt="${t(data.title)}" loading="lazy">
-        </div>
-        <div class="hero-device hero-device-ghost" aria-hidden="true">
-          <img src="${heroGhostImg}" alt="${t(data.title)} preview" loading="lazy">
-        </div>
-        <div class="hero-art-glow" aria-hidden="true"></div>
-      </div>
-    </section>
-
-    <section class="case-section capabilities-section">
-      <div class="section-headline center">
-        <h2>${labels.caps}</h2>
-        <p>${labels.capsDesc}</p>
-      </div>
-      <div class="cap-grid">${capCards}</div>
-    </section>
-
-    <section class="case-section screens-wrap">
-      <div class="section-headline center">
-        <h2>${labels.screens}</h2>
-        <p>${labels.screensDesc}</p>
-      </div>
-      <div class="screen-row hide-scrollbar">
-        ${shotCards}
-      </div>
-      ${screenDots ? `<div class="screen-dots">${screenDots}</div>` : ''}
-    </section>
-  `;
-
-        const caseTitle = document.getElementById('case-title');
-        if (caseTitle) caseTitle.textContent = `${t(data.title)} Case Study`;
-
-        // Image loading (hero + screenshots)
-        const initMediaLoaders = () => {
-            document.querySelectorAll('.media-slot').forEach((slot) => {
-                const img = slot.querySelector('img');
-                const loaderTextEl = slot.querySelector('.img-loader-text');
-                if (!img) return;
-                const setLoaded = () => slot.classList.add('img-loaded');
-                const setError = () => {
-                    slot.classList.add('img-error');
-                    if (loaderTextEl) loaderTextEl.textContent = errorText;
-                };
-                if (img.complete && img.naturalWidth > 0) {
-                    setLoaded();
-                } else {
-                    img.addEventListener('load', setLoaded, {once:true});
-                    img.addEventListener('error', setError, {once:true});
-                }
-            });
-        };
-        const initScreensCarousel = () => {
-            const row = document.querySelector('.screen-row');
-            const dots = Array.from(document.querySelectorAll('.screen-dot'));
-            if (!row || !dots.length) return;
-
-            const items = Array.from(row.querySelectorAll('.shot-card'));
-            if (!items.length) return;
-
-            let idx = 0;
-            let targets = [];
-            let rafId = null;
-            let timer;
-            let animating = false;
-            let scrollEndTimer;
-            const autoDelay = 2200;
-            const animDuration = 650;
-
-            const calcTargets = () => {
-                const padLeft = parseFloat(getComputedStyle(row).paddingLeft) || 0;
-                targets = items.map(item => item.offsetLeft - padLeft);
-            };
-
-            const updateDots = () => {
-                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-            };
-
-            const easeInOutCubic = (t) => (t < 0.5
-                ? 4 * t * t * t
-                : 1 - Math.pow(-2 * t + 2, 3) / 2);
-
-            const animateTo = (nextIdx, duration = animDuration) => {
-                idx = (nextIdx + dots.length) % dots.length;
-                if (!targets.length) calcTargets();
-                const target = targets[idx] ?? 0;
-                if (duration <= 0) {
-                    row.scrollLeft = target;
-                    updateDots();
-                    return;
-                }
-                const start = row.scrollLeft;
-                const startTime = performance.now();
-                animating = true;
-                if (rafId) cancelAnimationFrame(rafId);
-                const tick = (now) => {
-                    const t = Math.min(1, (now - startTime) / duration);
-                    const eased = easeInOutCubic(t);
-                    row.scrollLeft = start + (target - start) * eased;
-                    if (t < 1) {
-                        rafId = requestAnimationFrame(tick);
-                    } else {
-                        animating = false;
-                        updateDots();
-                    }
-                };
-                updateDots();
-                rafId = requestAnimationFrame(tick);
-            };
-
-            const startAuto = () => {
-                stopAuto();
-                timer = setInterval(() => animateTo(idx + 1, animDuration), autoDelay);
-            };
-            const stopAuto = () => {
-                if (timer) clearInterval(timer);
-            };
-
-            row.addEventListener('mouseenter', stopAuto);
-            row.addEventListener('mouseleave', startAuto);
-            row.addEventListener('touchstart', stopAuto, {passive:true});
-            row.addEventListener('touchend', startAuto, {passive:true});
-            row.addEventListener('scroll', () => {
-                if (animating) return;
-                if (scrollEndTimer) clearTimeout(scrollEndTimer);
-                scrollEndTimer = setTimeout(() => {
-                    if (!targets.length) calcTargets();
-                    const current = row.scrollLeft;
-                    let nearest = 0;
-                    let min = Infinity;
-                    targets.forEach((t, i) => {
-                        const d = Math.abs(current - t);
-                        if (d < min) { min = d; nearest = i; }
-                    });
-                    if (nearest !== idx) {
-                        idx = nearest;
-                        updateDots();
-                    }
-                }, 120);
-            }, {passive:true});
-
-            dots.forEach((dot, i) => {
-                dot.addEventListener('click', () => {
-                    animateTo(i, animDuration);
-                    startAuto();
-                });
-            });
-
-            window.addEventListener('resize', () => {
-                calcTargets();
-                animateTo(idx, 0);
-            });
-
-            calcTargets();
-            updateDots();
-            startAuto();
+            document.documentElement.lang = next;
+            location.reload();
         };
 
-        initMediaLoaders();
-        initScreensCarousel();
-        requestAnimationFrame(() => {
-            el.classList.add('show');
-            const finishEnter = () => {
-                if (!el.classList.contains('page-enter')) return;
-                el.classList.remove('page-enter');
-                el.classList.add('page-entered');
-            };
-            const hero = document.querySelector('.hero-device-main');
-            if (hero) hero.addEventListener('animationend', finishEnter, {once:true});
-            setTimeout(finishEnter, 1500);
-        });
+        btnId.addEventListener('click', () => applyLang('id'));
+        btnEn.addEventListener('click', () => applyLang('en'));
     })();
 </script>
+<script src="assets/js/projects.js?v=4"></script>
+<script src="assets/js/project-detail.js?v=4"></script>
 </body>
 </html>
 
