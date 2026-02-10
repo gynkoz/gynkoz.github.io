@@ -157,7 +157,7 @@ window.PROJECTS = [
             id:'Aplikasi distributor untuk tracking barang ke toko berbasis journey plan, dengan absensi, validasi toko via geotag + selfie, e-sign dan cetak nota, dashboard tagihan/kunjungan, serta flow dropping, invoice, retur, NOO, mutasi, settlement, dan inventory. Offline-first aman tanpa internet.',
             en:'Distributor app to track stock to stores on a journey plan with attendance, geo + selfie validation, e-sign and receipt printing, billing/visit dashboards, and complete drop-invoice-return plus stock operations. Offline-first when the network is down.'
         },
-        homeChips: ['800+ Users', '2020 ongoing', 'Sari Roti'],
+        homeChips: ['2000+ Users', '2019 ongoing', 'Sari Roti'],
         chips: ['Android', 'Logistics', 'Offline-first'],
         stack: ['Android', 'Offline Sync', 'Geo Validation', 'E-Sign'],
         features: [
@@ -237,40 +237,79 @@ window.PROJECTS = [
         links: { }
     },
     {
-        id: 'SFA Apps',
-        title: { id:'SFA Apps', en:'SFA Apps' },
+        id: 'preseller',
+        title: { id:'Aqua Preseller Apps', en:'Aqua Preseller Apps' },
         desc: {
-            id:'Dashboard forecasting interaktif untuk keputusan berbasis data.',
-            en:'Interactive forecasting dashboard for data-driven decisions.'
+            id:'Aplikasi merchandiser Danone Aqua untuk tracking produk di toko lewat foto dan input manual. Image Recognition mempercepat identifikasi rak agar pelacakan lebih cepat dan akurat.',
+            en:'Merchandiser app for Danone Aqua to track in-store products via photos and manual input. Image Recognition speeds up shelf identification for faster, more accurate tracking.'
         },
-        chips: ['Analytics', 'Timeseries'],
-        stack: ['Node.js', 'ClickHouse', 'Highcharts'],
+        homeChips: ['800+ Users', '2019 ongoing', 'Aqua'],
+        chips: ['Android', 'CV', 'Offline-first'],
+        stack: ['Android', 'TFLite', 'On-device CV', 'Offline Sync'],
         features: [
             {
-                icon: 'query_stats',
-                title: { id:'Skenario promosi', en:'Promotion what-if' },
-                desc: { id:'Tes skenario promosi', en:'Test promotion scenarios' }
+                icon: 'assignment_turned_in',
+                title: { id:'Absensi merchandiser', en:'Merchandiser attendance' },
+                desc: { id:'Absensi harian langsung dari aplikasi lapangan.', en:'Daily attendance captured straight from the field.' }
             },
             {
-                icon: 'warning',
-                title: { id:'Deteksi anomali', en:'Anomaly detection' },
-                desc: { id:'Alert anomali otomatis', en:'Automated anomaly alerts' }
+                icon: 'location_on',
+                title: { id:'Geotag validasi toko', en:'Geo-tagged store validation' },
+                desc: { id:'Validasi lokasi toko dengan geotag dan foto.', en:'Verify store location with geo tags and photos.' }
             },
             {
-                icon: 'file_download',
-                title: { id:'Export PDF/CSV', en:'Export PDF/CSV' },
-                desc: { id:'Unduh laporan cepat', en:'Quick report downloads' }
+                icon: 'auto_awesome',
+                title: { id:'Image Recognition (TFLite)', en:'Image Recognition (TFLite)' },
+                desc: { id:'Deteksi produk otomatis untuk tracking yang lebih cepat.', en:'Automatic product detection for faster tracking.' }
+            },
+            {
+                icon: 'screen_rotation',
+                title: { id:'Foto sesuai KPI', en:'KPI-aligned photos' },
+                desc: { id:'Sensor gyro bantu ambil foto dengan sudut yang sesuai KPI.', en:'Gyro guidance keeps photo angles aligned with KPI.' }
+            },
+            {
+                icon: 'cloud_off',
+                title: { id:'Offline-first', en:'Offline-first' },
+                desc: { id:'Tetap aman saat koneksi internet hilang.', en:'Keeps working safely when the network drops.' }
+            },
+            {
+                icon: 'insights',
+                title: { id:'Dashboard score real-time', en:'Real-time store scores' },
+                desc: { id:'Skor toko dan kunjungan dipantau secara real-time.', en:'Store scores and visits update in real time.' }
+            },
+            {
+                icon: 'cloud',
+                title: { id:'Deteksi cuaca', en:'Weather detection' },
+                desc: { id:'Informasi cuaca bantu perencanaan kunjungan.', en:'Weather signals support visit planning.' }
             }
         ],
         metrics: [
-            { label:'SKU', value:'1.2K+' },
-            { label:'Latency', value:'sub-second charting' }
+            { label:'Mode', value:'Offline-first' },
+            { label:'CV', value:'On-device TFLite' },
+            { label:'Scores', value:'Real-time' }
         ],
-        client: 'FMCG Brand',
+        client: 'Danone Aqua',
         period: '2024',
         role: 'Fullstack Engineer',
-        gallery: ['assets/img/placeholder.png','assets/img/placeholder.png'],
-        image: 'assets/img/placeholder.png',
+        heroImage: 'assets/img/preseller/Main Menu.png',
+        heroGhostImage: 'assets/img/preseller/Store List.png',
+        gallery: [
+            'assets/img/preseller/Main Menu.png',
+            'assets/img/preseller/Login.png',
+            'assets/img/preseller/Store List.png',
+            'assets/img/preseller/Store List (2).png',
+            'assets/img/preseller/Store Detail.png',
+            'assets/img/preseller/Dashboard.png',
+            'assets/img/preseller/Image Recognition.png',
+            'assets/img/preseller/Detail IR.png',
+            'assets/img/preseller/Check Update.png',
+            'assets/img/preseller/Absent.png',
+            'assets/img/preseller/Sync Data.png',
+            'assets/img/preseller/Guideline.png',
+            'assets/img/preseller/TH.png',
+            'assets/img/preseller/TH Detail.png'
+        ],
+        image: 'assets/img/preseller/Dashboard.png',
         links: { }
     }
 ];
