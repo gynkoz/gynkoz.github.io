@@ -167,6 +167,11 @@ window.PROJECTS = [
                 desc: { id:'Geotag dan selfie memastikan kunjungan valid.', en:'Geotag plus selfie ensures valid store visits.' }
             },
             {
+                icon: 'tune',
+                title: { id:'Kuestioner fleksibel', en:'Flexible questionnaires' },
+                desc: { id:'Atur dropdown, free text, calendar, foto, dan radio button.', en:'Customize dropdowns, free text, calendar, photo, and radio buttons.' }
+            },
+            {
                 icon: 'local_shipping',
                 title: { id:'Dropping, invoice, retur', en:'Drop, invoice, return' },
                 desc: { id:'Alur distribusi lengkap dari drop barang sampai retur.', en:'Full distribution flow from drops to in-store invoices and returns.' }
@@ -211,6 +216,7 @@ window.PROJECTS = [
             'assets/img/dmsdistributor/Store No Visit.jpg',
             'assets/img/dmsdistributor/Absensi.jpg',
             'assets/img/dmsdistributor/Kuestioner.jpg',
+            'assets/img/dmsdistributor/Kuestioner Detail.jpg',
             'assets/img/dmsdistributor/Inventory Stok.jpg',
             'assets/img/dmsdistributor/Ambil Stok.jpg',
             'assets/img/dmsdistributor/Create Dropping.jpg',
