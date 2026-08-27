@@ -1,0 +1,405 @@
+/* ============================================================
+   HERO X — dark kinetic typography + orbiting tech centerpiece
+   Fully rebuilt. Dark canvas is intentional (independent of theme).
+   ============================================================ */
+
+.hero-x {
+    --hx-bg: #070b16;
+    --hx-bg-2: #0b1226;
+    --hx-accent: #4D7CFF;
+    --hx-accent-2: #22d3ee;
+    --hx-text: #eaf0ff;
+    --hx-muted: #9aa8c7;
+    --hx-line: rgba(255, 255, 255, .08);
+
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 96px 24px 80px;
+    background: radial-gradient(120% 120% at 15% 10%, var(--hx-bg-2) 0%, var(--hx-bg) 55%);
+    color: var(--hx-text);
+    isolation: isolate;
+}
+
+/* ===== Background layers ===== */
+.hero-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+
+.hero-grid-mesh {
+    position: absolute;
+    inset: -2px;
+    background-image:
+        linear-gradient(var(--hx-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--hx-line) 1px, transparent 1px);
+    background-size: 54px 54px;
+    mask-image: radial-gradient(70% 70% at 50% 40%, #000 0%, transparent 100%);
+    -webkit-mask-image: radial-gradient(70% 70% at 50% 40%, #000 0%, transparent 100%);
+    opacity: .6;
+    animation: mesh-pan 24s linear infinite;
+}
+@keyframes mesh-pan {
+    to { background-position: 54px 54px, 54px 54px; }
+}
+
+.hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: .5;
+    will-change: transform;
+}
+.hero-blob-1 { width: 520px; height: 520px; left: -120px; top: -120px; background: radial-gradient(circle, #2f6bff 0%, transparent 70%); }
+.hero-blob-2 { width: 460px; height: 460px; right: -100px; top: 20%; background: radial-gradient(circle, #22d3ee 0%, transparent 70%); opacity: .35; }
+.hero-blob-3 { width: 380px; height: 380px; left: 30%; bottom: -140px; background: radial-gradient(circle, #7c3aed 0%, transparent 70%); opacity: .35; }
+
+.hero-noise {
+    position: absolute;
+    inset: 0;
+    opacity: .04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+}
+
+/* ===== Layout ===== */
+.hero-x-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    align-items: center;
+    gap: 48px;
+}
+
+/* ===== Left column: kinetic type ===== */
+.hero-greeting {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--hx-muted);
+    letter-spacing: .04em;
+}
+
+.hero-name {
+    margin: 0 0 18px;
+    font-weight: 900;
+    line-height: 1.04;
+    letter-spacing: -.03em;
+    font-size: clamp(2.4rem, 5.4vw, 4.6rem);
+    color: #fff;
+}
+/* Kinetic name: gradient shimmer ONLY when JS is live (words are split spans).
+   Without .js-anim the name stays solid white — no invisible-text risk. */
+.js-anim .hero-name {
+    background: linear-gradient(100deg, #fff 25%, #7fa8ff 40%, #22d3ee 50%, #7fa8ff 60%, #fff 75%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: name-shine 6s linear infinite;
+}
+@keyframes name-shine {
+    to { background-position: 200% center; }
+}
+.js-anim .hero-name .w {
+    display: inline-block;
+    background: inherit;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    transform: translateY(36px);
+    will-change: transform, opacity;
+}
+.js-anim .hero-name .w + .w { margin-left: .24em; }
+.hero-name-line { display: block; color: #fff; }
+.hero-name-accent { color: #7fa8ff; }
+.hero-name .char {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+.hero-roles {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: clamp(1.05rem, 2.1vw, 1.6rem);
+    font-weight: 700;
+    color: var(--hx-accent-2);
+    margin-bottom: 22px;
+    min-height: 1.8em;
+}
+.hero-roles-prefix { color: rgba(154, 168, 199, .5); font-weight: 600; }
+.hero-roles-word { color: #dbe6ff; }
+.hero-roles-caret {
+    color: var(--hx-accent);
+    animation: caret-blink 1s step-end infinite;
+    font-weight: 400;
+}
+@keyframes caret-blink {
+    50% { opacity: 0; }
+}
+
+.hero-x-desc {
+    margin: 0 0 28px;
+    max-width: 520px;
+    font-size: 1.04rem;
+    line-height: 1.7;
+    color: var(--hx-muted);
+}
+
+/* ===== Stats (counters) ===== */
+.hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+    margin-bottom: 34px;
+}
+.hero-stat { display: flex; flex-direction: column; gap: 2px; }
+.hero-stat-num {
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    font-weight: 900;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    background: linear-gradient(100deg, #fff 0%, #9db8ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+/* Glow pulse after counter lands (added by JS) */
+.hero-stat-num.stat-landed { animation: stat-glow 1.1s ease-out 1; }
+@keyframes stat-glow {
+    0% { filter: drop-shadow(0 0 0 rgba(127, 168, 255, 0)); }
+    35% { filter: drop-shadow(0 0 14px rgba(127, 168, 255, .85)); }
+    100% { filter: drop-shadow(0 0 0 rgba(127, 168, 255, 0)); }
+}
+.hero-stat-label {
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--hx-muted);
+}
+/* single row on all widths */
+.hero-stats { flex-wrap: nowrap; }
+.hero-stat { min-width: 0; }
+@media (max-width: 480px) {
+    .hero-stats { gap: 14px; }
+    .hero-stat-num { font-size: 1.35rem; }
+    .hero-stat-label { font-size: .68rem; }
+}
+
+/* ===== CTA buttons (magnetic, pill) ===== */
+.hero-x-cta { display: flex; flex-wrap: wrap; gap: 16px; }
+.btn-x {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 0;
+    font-weight: 700;
+    font-size: .98rem;
+    text-decoration: none;
+    overflow: hidden;
+    will-change: transform;
+    transition: box-shadow .3s ease, border-color .3s ease, background .3s ease;
+    outline: none;
+}
+.btn-x:focus-visible { box-shadow: 0 0 0 3px rgba(34, 211, 238, .55); }
+/* Return-to-origin: only transition transform while .magnetic-reset is set.
+   mousemove removes the class so the follow stays 1:1; mouseleave adds it and
+   clears the inline transform → smooth glide back, no drift. */
+.btn-x.magnetic-reset { transition: transform .55s cubic-bezier(.22, .8, .22, 1), box-shadow .3s ease, border-color .3s ease, background .3s ease; }
+.btn-x > span {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+}
+.btn-x i { font-size: 20px; }
+.btn-x-primary {
+    color: #fff;
+    background: linear-gradient(100deg, var(--hx-accent) 0%, #22d3ee 130%);
+    box-shadow: 0 10px 30px -8px rgba(77, 124, 255, .6), inset 0 1px 0 rgba(255, 255, 255, .25);
+}
+.btn-x-primary:hover { box-shadow: 0 16px 44px -8px rgba(77, 124, 255, .85), inset 0 1px 0 rgba(255, 255, 255, .25); }
+.btn-x-primary::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, .35) 50%, transparent 70%);
+    transform: translateX(-130%);
+    transition: transform .8s ease;
+}
+.btn-x-primary:hover::after { transform: translateX(130%); }
+.btn-x-ghost {
+    color: #eaf0ff;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .18);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .02);
+}
+.btn-x-ghost:hover {
+    background: rgba(255, 255, 255, .1);
+    border-color: rgba(34, 211, 238, .5);
+    box-shadow: 0 10px 28px -10px rgba(34, 211, 238, .4);
+}
+
+/* ===== Right column: photo + orbit ===== */
+.hero-x-right { display: flex; align-items: center; justify-content: center; }
+.hero-photo-stage {
+    position: relative;
+    width: min(440px, 82vw);
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-items: center;
+    will-change: transform;
+}
+.hero-photo-glow {
+    position: absolute;
+    inset: 8%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(77, 124, 255, .55) 0%, rgba(34, 211, 238, .18) 45%, transparent 70%);
+    filter: blur(28px);
+    animation: glow-breathe 9s ease-in-out infinite;
+}
+@keyframes glow-breathe {
+    0%, 100% { opacity: .7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.06); }
+}
+.hero-photo-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, .14);
+}
+.hero-photo-ring-1 { inset: 4%; animation: spin-slow 50s linear infinite; }
+.hero-photo-ring-2 {
+    inset: 15%;
+    border: none;
+    background: conic-gradient(from 0deg, transparent 0deg, rgba(77, 124, 255, .55) 60deg, transparent 130deg, transparent 200deg, rgba(34, 211, 238, .45) 260deg, transparent 330deg);
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+    animation: spin-slow 12s linear infinite;
+}
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+
+.hero-photo-wrap {
+    position: relative;
+    z-index: 3;
+    width: 68%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    padding: 6px;
+    background: linear-gradient(160deg, rgba(255, 255, 255, .18), rgba(255, 255, 255, .02));
+    box-shadow: 0 24px 60px -18px rgba(0, 0, 0, .8), inset 0 0 0 1px rgba(255, 255, 255, .12);
+    animation: photo-float 10s ease-in-out infinite;
+}
+@keyframes photo-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+.hero-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    background: #0b1226;
+}
+
+/* Orbiting tech badges (positioned by JS) — pill with icon + label */
+.hero-orbit { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+.orbit-badge {
+    position: absolute;
+    top: 50%; left: 50%;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: rgba(12, 18, 38, .82);
+    border: 1px solid rgba(255, 255, 255, .12);
+    color: #dbe6ff;
+    font-size: .74rem;
+    font-weight: 700;
+    white-space: nowrap;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 22px -10px rgba(0, 0, 0, .8);
+    will-change: transform;
+    pointer-events: auto;
+    cursor: default;
+    transition: scale .2s ease, border-color .2s ease;
+}
+.orbit-badge:hover { scale: 1.08; border-color: rgba(127, 168, 255, .55); }
+.orbit-badge i { font-size: 15px; color: var(--hx-accent-2); }
+
+/* ===== Scroll hint ===== */
+.hero-x .scroll-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--hx-muted);
+    font-weight: 600;
+    font-size: .78rem;
+    transition: opacity .3s ease, transform .3s ease;
+}
+.hero-x .scroll-hint .material-icons { font-size: 22px; color: var(--hx-accent); }
+.hero-x .scroll-hint { animation: hint-bounce 1.6s ease-in-out infinite; }
+.hero-x .scroll-hint.hide { opacity: 0; transform: translate(-50%, 10px); pointer-events: none; animation: none; }
+@keyframes hint-bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 8px); }
+}
+
+/* ===== Entrance pre-state (JS reveals via anime.js) ===== */
+.js-anim [data-hx] { opacity: 0; }
+.js-anim .hero-name .char { opacity: 0; }
+.js-anim .orbit-badge { opacity: 0; }
+.js-anim .lang-toggle { opacity: 0; }
+
+/* ===== Responsive ===== */
+@media (max-width: 920px) {
+    .hero-x-inner { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+    .hero-x-left { order: 2; }
+    .hero-x-right { order: 1; }
+    .hero-status, .hero-roles, .hero-x-cta, .hero-stats { justify-content: center; }
+    .hero-x-desc { margin-left: auto; margin-right: auto; }
+    .hero-photo-stage { width: min(340px, 74vw); }
+}
+@media (max-width: 600px) {
+    .hero-x { padding: 88px 18px 70px; min-height: 0; }
+    /* compact photo centerpiece so content doesn't sit too deep */
+    .hero-photo-stage { width: min(230px, 62vw); }
+    .hero-stats { gap: 18px; }
+    /* simplify orbit on small screens for perf */
+    .hero-orbit .orbit-badge:nth-child(n+5) { display: none; }
+    .orbit-badge { font-size: .68rem; padding: 6px 10px; }
+    .orbit-badge i { font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-grid-mesh,
+    .hero-photo-glow,
+    .hero-photo-ring,
+    .hero-photo-wrap,
+    .hero-status-dot,
+    .hero-roles-caret,
+    .hero-name,
+    .hero-x .scroll-hint { animation: none !important; }
+}

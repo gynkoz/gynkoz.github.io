@@ -1,0 +1,187 @@
+/* ============================================================
+   BASE — Theme tokens, reset, typography, global utilities
+   ============================================================ */
+
+/* Dark-only design tokens (single theme) */
+:root {
+    --m3-primary: #4D7CFF;
+    --m3-on-primary: #FFFFFF;
+    --m3-surface: #121826;
+    --m3-surface-2: #0B0F1A;
+    --m3-on-surface: #E6ECFF;
+    --m3-outline: #22304A;
+    --m3-muted: rgba(230, 236, 255, .7);
+    --m3-chip-bg: #1A2540;
+    --m3-chip-text: #AFC3FF;
+    --m3-hero: #141B2C;
+    --m3-surface-alt: #1A1430;
+    --rad-s: 12px;
+    --rad-m: 16px;
+    --rad-l: 24px;
+    --elev-1: 0 2px 8px rgba(0, 0, 0, .3);
+    --elev-2: 0 6px 18px rgba(0, 0, 0, .4);
+}
+
+html, body { height: 100%; }
+
+body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+    background: #070b16;
+    color: var(--m3-on-surface);
+    scroll-behavior: auto !important;
+}
+
+a { color: var(--m3-primary); }
+a.btn, a.btn-large, a.btn-small { color: var(--m3-on-primary) !important; }
+
+/* Section base (dark canvas) */
+.section { padding: 48px 0; }
+.section.white { background: var(--m3-surface-alt); }
+.section.blue, .blue.lighten-5 { background: var(--m3-surface-2) !important; }
+
+.blue-text.text-darken-2 { color: var(--m3-primary) !important; }
+.grey-text.text-darken-3 { color: var(--m3-muted) !important; }
+
+/* Buttons -> M3 look */
+.btn, .btn-large, .btn-small {
+    background-color: var(--m3-primary) !important;
+    color: var(--m3-on-primary) !important;
+    text-transform: none;
+    border-radius: var(--rad-m);
+}
+.btn.white { background: var(--m3-surface) !important; color: var(--m3-primary) !important; border: 1px solid var(--m3-outline); }
+.btn-flat { color: var(--m3-primary) !important; border-radius: var(--rad-m); }
+.btn i.left, .btn-large i.left { margin-right: 8px; }
+
+/* Chips -> M3 clean */
+.chip {
+    border-radius: 999px;
+    background: var(--m3-chip-bg);
+    color: var(--m3-chip-text);
+    font-weight: 600;
+    border: none;
+    box-shadow: none !important;
+    padding: 0 12px;
+    height: 28px;
+    line-height: 28px;
+    font-size: .85rem;
+}
+.chips-container .chip { margin: 4px; }
+.chip.blue { background: var(--m3-primary) !important; }
+.chip.blue.white-text { color: var(--m3-on-primary) !important; }
+
+/* Collections */
+.collection { border-radius: var(--rad-m); box-shadow: var(--elev-1); border: 1px solid var(--m3-outline); overflow: hidden; }
+.collection .collection-item { border-bottom: 1px solid var(--m3-outline); }
+.collection .collection-item:last-child { border-bottom: none; }
+.collection { background: #141B2C; border-color: #22304A; }
+.collection .collection-item { background: #141B2C; color: var(--m3-on-surface); border-bottom-color: #22304A; }
+
+/* Cards (generic) */
+.card {
+    border-radius: var(--rad-m);
+    box-shadow: var(--elev-1);
+    overflow: hidden;
+    background: var(--m3-surface);
+    border: 1px solid var(--m3-outline);
+}
+.card-image img { display: block; }
+.card .card-content { padding: 16px 18px; }
+.card .card-title { font-weight: 700; }
+.card-reveal { background: var(--m3-surface); }
+
+/* Footer */
+.page-footer {
+    background: #070b16;
+    color: var(--m3-muted);
+    border-top: 1px solid var(--m3-outline);
+    box-shadow: none;
+    scroll-snap-align: end;
+}
+
+/* Utilities */
+.z-depth-2 { box-shadow: var(--elev-2) !important; }
+.responsive-img { border-radius: var(--rad-m); }
+
+/* anime.js reveal states — only hide pre-anim when JS is active (.js-anim on <html>).
+   If JS/anime fails, content stays fully visible (no permanent hidden content). */
+.js-anim [data-animate] { opacity: 0; }
+.js-anim [data-animate].animated { opacity: 1; }
+
+/* Cinematic scroll-reveal building blocks (gated by .js-anim) */
+.js-anim [data-reveal] { opacity: 0; will-change: transform, opacity; }
+.js-anim [data-reveal].revealed { opacity: 1; }
+
+/* Gradient bridge to smooth hero -> next section (dark canvas + noise) */
+.section-bridge {
+    height: 200px;
+    margin-top: -200px;
+    position: relative;
+    z-index: 3;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent 0%, #070b16 100%);
+}
+.section-bridge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: .04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+}
+
+/* ===== Global extras (dark-only) ===== */
+/* Keyboard focus ring that survives dark backgrounds */
+:focus-visible {
+    outline: 2px solid var(--m3-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Custom cursor glow (pointer:fine only; JS moves it) */
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    margin: -150px 0 0 -150px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(circle, rgba(77, 124, 255, .16) 0%, rgba(34, 211, 238, .07) 40%, transparent 70%);
+    mix-blend-mode: screen;
+    will-change: transform;
+}
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+    .cursor-glow { display: none; }
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    z-index: 1100;
+    background: linear-gradient(90deg, var(--m3-primary), #22d3ee);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    will-change: transform;
+}
+
+/* Hairline gradient border between dark sections */
+.dark-section { position: relative; }
+.dark-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1080px, 86%);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(127, 168, 255, .35), transparent);
+    pointer-events: none;
+}

@@ -1,0 +1,45 @@
+/* ============================================================
+   NAVBAR — theme toggle, lang toggle, dots navigation
+   ============================================================ */
+
+.navbar-fixed nav { background: var(--m3-surface) !important; box-shadow: none; border-bottom: 1px solid var(--m3-outline); }
+.navbar-fixed nav .brand-logo { color: var(--m3-on-surface); font-weight: 700; }
+.navbar-fixed nav ul li a { color: var(--m3-on-surface); }
+.sidenav .user-view, .sidenav a { border-radius: var(--rad-s); }
+
+/* Lang toggle */
+.lang-toggle {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    z-index: 1000;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: var(--m3-surface) !important;
+    border: 1px solid var(--m3-outline);
+    border-radius: 999px;
+    padding: 4px;
+    box-shadow: var(--elev-2);
+}
+.lang-btn {
+    border: none;
+    background: transparent;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--m3-primary) !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.lang-btn[aria-pressed="true"] { background: var(--m3-chip-bg) !important; color: var(--m3-primary) !important; }
+.lang-flag { font-size: .8rem; font-weight: 700; }
+
+@media (max-width: 600px) {
+    .lang-toggle { top: 10px; right: 10px; padding: 3px; }
+    .lang-btn { padding: 6px 8px; }
+}
+
+/* Dot navigation (right side) — removed */
